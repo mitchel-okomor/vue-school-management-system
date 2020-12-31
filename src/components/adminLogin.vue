@@ -80,7 +80,6 @@
   </div>
   <button type="submit" class="btn btn-primary">Register</button>
 </form>
-  </main>
 </template>
 
 <script>
@@ -88,8 +87,8 @@ import axios from 'axios';
 import {SERVER_URL} from '../helpers/constants';
 
 export default {
-name: "admit",
-props: "student",
+name: "adminLogin",
+props: "admin",
 data() {
 return {
   firstname:"",
