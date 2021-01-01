@@ -10,6 +10,10 @@ import Overview from '../components/Overview';
 import StaffLogin from '../components/staffLogin';
 import StaffRegister from '../components/staffRegister';
 import StudentLogin from '../components/studentLogin';
+import School from '../components/school';
+import Staffs from '../components/Staffs';
+import Evaluations from '../components/Evaluations';
+import Info from '../components/Info';
 //import store from '../store/index';
 
 
@@ -83,7 +87,8 @@ const routes = [
      // beforeEnter: ifStudentIsNotAuthenticated
       
     },
-    //staff dashbord routes
+
+    //admin dashbord routes
     {
         path: "/dashboard/",
         component: Dashboard,
@@ -100,6 +105,28 @@ const routes = [
               component: Students
             },
             {
+              path: "school/",
+              name: 'school',
+              component: School,
+
+              children:[
+              {  path: "info",
+                name: 'info',
+                component: Info,
+              },
+              ]
+            },
+            {
+              path: "staffs",
+              name: 'staffs',
+              component: Staffs
+            },
+            {
+              path: "evaluations",
+              name: 'evaluations',
+              component: Evaluations
+            },
+            {
               path: "register",
               name: 'register',
               component: Admit
@@ -109,6 +136,7 @@ const routes = [
               name: 'employ',
               component: StaffRegister
             },
+            
             //default route
             {
               path: '',
@@ -143,6 +171,8 @@ const routes = [
    
     ]
 },
+
+
 
 ]
 

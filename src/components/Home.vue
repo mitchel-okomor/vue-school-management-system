@@ -1,8 +1,8 @@
 <template>
   <main class="home d-flex justify-content-center">
     <div class="container-fluid welcome pb-5">
-      <h1 class="mt-5">Welcome</h1>
-      <p>Knowledge is the key</p>
+      <h1 class="mt-5">Welcome to C-drive Schools</h1>
+      <p>Knowledge open doors to possibities</p>
       <button class="btn btn-primary mt-3">
         <router-link :to="{ path: '/admission' }"> Take admission</router-link>
       </button>

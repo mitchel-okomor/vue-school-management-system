@@ -5,7 +5,7 @@
         <div class="left">
           <div class="dashboard-image mt-5 p-4 ">
             <img src="../assets/dummy.jpg" />
-            <h3 class="mt-2">{user.firstname} {user.lastname}</h3>
+            <h3 class="mt-2">{user.firstname}</h3>
           </div>
 
           <div class="side pt-5 ">
@@ -21,52 +21,33 @@
                       >
                     </li>
                     <li>
-                      <router-link :to="{ path: '/dashboard/staffs' }"
+                      <router-link :to="{ path: '/dashboard/school' }"
                         ><i class="fa fa-th-large" aria-hidden="true"></i>
-                        All staffs</router-link
+                        School</router-link
                       >
                     </li>
                     <li>
                       <router-link :to="{ path: '/dashboard/students' }"
                         ><i class="fa fa-th-large" aria-hidden="true"></i>
-                       All Students</router-link
+                      Students</router-link
                       >
                     </li>
                     <li>
-                      <router-link :to="{ path: '/dashboard/info' }"
+                      <router-link :to="{ path: '/dashboard/staffs' }"
                         ><i class="fa fa-minus-square" aria-hidden="true"></i>
-                       School Info</router-link
+                       Staffs</router-link
                       >
                     </li>
                     <li>
-                      <router-link :to="{ path: '/dashboard//account' }"
+                      <router-link :to="{ path: '/dashboard/evaluations' }"
                         ><i class="fa fa-circle" aria-hidden="true"></i>
-                        School Acount</router-link
+                        Evaluations</router-link
                       >
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-ms-12 pl-0">
-                <div>
-                  <ul class=" px-1">
-                    <li>
-                      <router-link :to="{ path: '/dashboard/register' }"
-                        ><i class="fa fa-tachometer" aria-hidden="true"></i>
-                        Admit student</router-link
-                      >
-                    </li>
-                    <li>
-                      <router-link :to="{ path: '/dashboard/employ' }"
-                        ><i class="fa fa-th-large" aria-hidden="true"></i>
-                        Employ staff</router-link
-                      >
-                    </li>
-                    
-                   
-                  </ul>
-                </div>
-              </div>
+              
             </div>
 
             <div class="text-center mt-5">
@@ -78,11 +59,7 @@
         </div>
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pl-0">
-        <div class="right">
-          <div class="dashboard-header mt-5">
-            <h1 class="">Staff Dashboard</h1>
-          </div>
-        </div>
+        
         <router-view></router-view>
       </div>
     </div>
