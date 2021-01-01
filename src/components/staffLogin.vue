@@ -22,6 +22,7 @@
 <script>
 import axios from 'axios';
 import {SERVER_URL} from '../helpers/constants';
+import {SET_STAFF} from '../helpers/mutationConstants';
 
 export default {
 name: "staffLogin",
@@ -49,7 +50,9 @@ axios.post(url, formData, {
         timeout: 30000,
       })
 .then((res)=>{
-  console.log(res);
+  console.log(res.data.info);
+  console.log("staff:" +this.$store.state.staff)
+  this.$store.dispatch(SET_STAFF, res.data.info)
 }
 )
 .catch((err)=>{
