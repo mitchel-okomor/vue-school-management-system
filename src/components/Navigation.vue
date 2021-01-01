@@ -7,18 +7,33 @@
           School Management System
         </router-link>
     </div>
-    <div>
-      <ul class="d-flex">
-        <li class=" nav-item mr-4"><a href="#"><router-link :to="{path: '/dashboard'}">Staff</router-link> </a></li>
-        <li class="nav-item mr-4"><a href="#"><router-link :to="{path: '/dashboard'}">Student</router-link> </a></li>
+    <div class="d-flex">
+       <ul class="d-flex" >
+        <li class=" nav-item mr-4" ><a href="#"><router-link :to="{path: '/dashboard'}">Staff</router-link> </a></li>
+        <li class="nav-item mr-4" ><a href="#"><router-link :to="{path: '/student/dashboard'}">Student</router-link> </a></li>
+     
       </ul>
-    </div>
+     <div class="mr-4">{{staff.firstname?staff.firstname: student.firstname?student.firstname: ""}}</div>
+    </div> 
   </nav>
 </template>
 
 <script>
 export default {
   name: "navigation",
+  data(){
+    return{
+      student:this.$store.getters.getStudent,
+      staff:this.$store.getters.getStaff
+    }
+  },
+
+  created(){
+    
+},
+  computed:{
+   
+  }
 };
 </script>
 

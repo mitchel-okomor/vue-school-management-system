@@ -1,6 +1,6 @@
 <template>
   <main class="home d-flex justify-content-center">
-    <div class="container-fluid welcome">
+    <div class="container-fluid welcome pb-5">
       <h1 class="mt-5">Welcome</h1>
       <p>Knowledge is the key</p>
       <button class="btn btn-primary mt-3">

@@ -1,5 +1,7 @@
 <template>
-  <div>Admin</div>
+  <div class="mt-5">
+ 
+  </div>
 </template>
 
 <script>

@@ -91,4 +91,8 @@ a:visited{
   color: white;
 }
 
+form{
+  border: 1px solid green;
+  border-radius: 0.5em;
+}
 </style>

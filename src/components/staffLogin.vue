@@ -36,13 +36,15 @@ staff:"",
 }
 },
 computed:{
-
-},
-created:function(){
- this.staff = this.$store.getters.getStaff;
+checkLogin:()=>{
 if(isLoggedIn()){
   console.log("loggedIn")
     this.$store.dispatch(SET_LOGGED_IN, true);}
+}
+},
+created:function(){
+ this.staff = this.$store.getters.getStaff;
+this.checkLogin();
 },
 methods: {
 

@@ -4,34 +4,55 @@ import Home from '../components/Home';
 import Admit from '../components/Admit';
 import Admin from '../components/Admin';
 import Dashboard from '../components/Dashboard';
+import studentDashboard from '../components/studentDashboard';
 import Students from '../components/Students';
 import Overview from '../components/Overview';
 import StaffLogin from '../components/staffLogin';
 import StaffRegister from '../components/staffRegister';
 import StudentLogin from '../components/studentLogin';
-import store from '../store/index';
+//import store from '../store/index';
 
 
 Vue.use(VueRouter);
 
-//check user authentication
-const ifStaffIsNotAuthenticated = (to, from, next) => {
-  console.log(store.getters.staffIsLoggedIn)
-  if (!store.getters.staffIsLoggedIn) {
-    next()
-    return
-  }
-  next('/dashboard')
-}
+// //check staff authentication
+// const ifStaffIsNotAuthenticated = (to, from, next) => {
+//   console.log(store.getters.staffIsLoggedIn)
+//   if (!store.getters.staffIsLoggedIn) {
+//     next()
+//     return
+//   }
+//   next('/dashboard')
+// }
 
-const ifStaffIsAuthenticated = (to, from, next) => {
-  console.log(store.getters.staffIsLoggedIn)
-  if (store.getters.staffIsLoggedIn) {
-    next()
-    return
-  }
-  next('/staff/login')
-}
+// const ifStaffIsAuthenticated = (to, from, next) => {
+//   console.log(store.getters.staffIsLoggedIn)
+//   if (store.getters.staffIsLoggedIn) {
+//     next();
+//     return;
+//   }
+//   next('/staff/login');
+// }
+
+
+// //check student authentication
+// const ifStudentIsNotAuthenticated = (to, from, next) => {
+//   console.log(store.getters.staffIsLoggedIn)
+//   if (!store.getters.staffIsLoggedIn) {
+//     next();
+//     return;
+//   }
+//   next('/sudent/dashboard');
+// }
+
+// const ifStudentIsAuthenticated = (to, from, next) => {
+//   console.log(store.getters.staffIsLoggedIn)
+//   if (store.getters.staffIsLoggedIn) {
+//     next()
+//     return
+//   }
+//   next('/student/login');
+// }
 
 
 const routes = [
@@ -48,7 +69,7 @@ const routes = [
     {
       path: "/staff/login",
       component: StaffLogin,
-      beforeEnter: ifStaffIsNotAuthenticated,
+     // beforeEnter: ifStaffIsNotAuthenticated,
     }
     ,
     {
@@ -59,12 +80,14 @@ const routes = [
       path: "/student/login",
       name:"student-login",
       component: StudentLogin,
+     // beforeEnter: ifStudentIsNotAuthenticated
       
     },
+    //staff dashbord routes
     {
         path: "/dashboard/",
         component: Dashboard,
-        beforeEnter: ifStaffIsAuthenticated,
+      //  beforeEnter: ifStaffIsAuthenticated,
         children: [
             {
               path: 'overview',
@@ -77,13 +100,50 @@ const routes = [
               component: Students
             },
             {
+              path: "register",
+              name: 'register',
+              component: Admit
+            },
+            {
+              path: "employ",
+              name: 'employ',
+              component: StaffRegister
+            },
+            //default route
+            {
               path: '',
               name: '',
               component: Admin
             }
          
           ]
-    }
+    },
+//students dashbourd routes
+{
+  path: "/student/dashboard/",
+  component: studentDashboard,
+ // beforeEnter: ifStudentIsAuthenticated,
+  children: [
+      {
+        path: 'overview',
+        name: 'student-overview',
+        component: Overview
+      },
+      {
+        path: 'students',
+        name: 'students',
+        component: Students
+      },
+      //default route
+      {
+        path: '',
+        name: '',
+        component: Admin
+      }
+   
+    ]
+},
+
 ]
 
 //Initialize a vue router
