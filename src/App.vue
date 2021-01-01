@@ -11,12 +11,36 @@ import Footer from './components/Footer.vue';
 //import Home from './components/Home.vue';
 import Navigation from './components/Navigation.vue';
 //import Admit from './components/Admit';
+import isLoggedIn from './helpers/checkLogin';
+import {GET_STAFF, SET_LOGGED_IN} from './helpers/mutationConstants';
 
 export default {
   name: 'App',
   components: {
     Footer,
    Navigation
+  },
+  data(){
+return{
+
+}
+  },
+
+created(){
+  },
+
+mounted(){
+if(this.checkLoggin()){
+  console.log("loggedIn")
+    this.$store.dispatch(SET_LOGGED_IN, true);
+  this.$store.dispatch(GET_STAFF)
+}
+},
+  methods:{
+
+    checkLoggin: ()=>{
+      return isLoggedIn();
+    }
   }
 }
 </script>

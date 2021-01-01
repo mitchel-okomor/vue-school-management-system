@@ -73,6 +73,7 @@ form{
   padding: 1.5rem;
   margin-top: 3rem;
 width: 30%;
+height: fit-content;
 }
 label{
 margin-top:0.5rem ;

@@ -9,8 +9,29 @@ import Overview from '../components/Overview';
 import StaffLogin from '../components/staffLogin';
 import StaffRegister from '../components/staffRegister';
 import StudentLogin from '../components/studentLogin';
+import store from '../store/index';
+
 
 Vue.use(VueRouter);
+
+//check user authentication
+const ifStaffIsNotAuthenticated = (to, from, next) => {
+  console.log(store.getters.staffIsLoggedIn)
+  if (!store.getters.staffIsLoggedIn) {
+    next()
+    return
+  }
+  next('/dashboard')
+}
+
+const ifStaffIsAuthenticated = (to, from, next) => {
+  console.log(store.getters.staffIsLoggedIn)
+  if (store.getters.staffIsLoggedIn) {
+    next()
+    return
+  }
+  next('/staff/login')
+}
 
 
 const routes = [
@@ -26,27 +47,24 @@ const routes = [
     },
     {
       path: "/staff/login",
-      name: "staff-login",
-      component: StaffLogin
-
+      component: StaffLogin,
+      beforeEnter: ifStaffIsNotAuthenticated,
     }
     ,
     {
       path: "/staff/employ",
-      name: "staff-login",
-      component: StaffRegister
-
+      component: StaffRegister,
     },
     {
       path: "/student/login",
       name:"student-login",
-      component: StudentLogin
+      component: StudentLogin,
+      
     },
     {
         path: "/dashboard/",
-        name: "dashboard",
         component: Dashboard,
-
+        beforeEnter: ifStaffIsAuthenticated,
         children: [
             {
               path: 'overview',

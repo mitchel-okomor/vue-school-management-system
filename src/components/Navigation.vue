@@ -9,8 +9,8 @@
     </div>
     <div>
       <ul class="d-flex">
-        <li class=" nav-item mr-4"><a href="#"><router-link :to="{path: '/staff'}">Staff</router-link> </a></li>
-        <li class="nav-item mr-4"><a href="#"><router-link :to="{path: '/student'}">Student</router-link> </a></li>
+        <li class=" nav-item mr-4"><a href="#"><router-link :to="{path: '/dashboard'}">Staff</router-link> </a></li>
+        <li class="nav-item mr-4"><a href="#"><router-link :to="{path: '/dashboard'}">Student</router-link> </a></li>
       </ul>
     </div>
   </nav>

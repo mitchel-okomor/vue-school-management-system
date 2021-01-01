@@ -22,7 +22,8 @@
 <script>
 import axios from 'axios';
 import {SERVER_URL} from '../helpers/constants';
-import {SET_STAFF} from '../helpers/mutationConstants';
+import {SET_STAFF, SET_LOGGED_IN} from '../helpers/mutationConstants';
+import isLoggedIn from '../helpers/checkLogin';
 
 export default {
 name: "staffLogin",
@@ -31,7 +32,17 @@ data() {
 return {
 email:"", 
 password:"",
+staff:"",
 }
+},
+computed:{
+
+},
+created:function(){
+ this.staff = this.$store.getters.getStaff;
+if(isLoggedIn()){
+  console.log("loggedIn")
+    this.$store.dispatch(SET_LOGGED_IN, true);}
 },
 methods: {
 
@@ -51,8 +62,14 @@ axios.post(url, formData, {
       })
 .then((res)=>{
   console.log(res.data.info);
-  console.log("staff:" +this.$store.state.staff)
-  this.$store.dispatch(SET_STAFF, res.data.info)
+  this.$store.dispatch(SET_STAFF, res.data.info.data);
+  this.$store.dispatch(SET_LOGGED_IN, true);
+  localStorage.setItem("token", res.data.info.token);
+    localStorage.setItem("userId", res.data.info.data._id);
+          this.$router.push('/dashboard')
+
+    console.log("staff:" +this.staff)
+
 }
 )
 .catch((err)=>{
@@ -76,6 +93,7 @@ form{
   padding: 1.5rem;
   margin-top: 3rem;
 width: 30%;
+height: fit-content;
 }
 label{
 margin-top:0.5rem ;
