@@ -32,8 +32,9 @@ created(){
 mounted(){
 if(this.checkLoggin()){
   console.log("loggedIn")
-    this.$store.dispatch(SET_LOGGED_IN, true);
   this.$store.dispatch(GET_STAFF)
+      this.$store.dispatch(SET_LOGGED_IN, true);
+
 }
 },
   methods:{
@@ -89,6 +90,10 @@ a{
 }
 a:visited{
   color: white;
+}
+a:hover{
+  text-decoration: none;
+  font-weight: 700;
 }
 
 form{

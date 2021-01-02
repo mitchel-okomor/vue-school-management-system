@@ -2,7 +2,9 @@ import { SET_USER } from "../../helpers/mutationConstants";
 
 
 export default {
-    state: () => ({ user: "" }),
+    state: () => ({ 
+      user:{}
+      }),
     mutations: {
         [SET_USER](state, payload) {
             state.staff = payload;

@@ -36,4 +36,7 @@ name: "school"
     min-height: 100vh;
     margin-top: 5rem;
 }
+a{
+  color: black;
+}
 </style>

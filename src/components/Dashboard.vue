@@ -8,7 +8,7 @@
             <h3 class="mt-2">{user.firstname}</h3>
           </div>
 
-          <div class="side pt-5 ">
+          <div class="side  ">
             <h4 class=" ">Navigation</h4>
             <div class="row">
               <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-ms-12 pr-0">
@@ -38,6 +38,12 @@
                        Staffs</router-link
                       >
                     </li>
+                     <li>
+                      <router-link :to="{ path: '/dashboard/books' }"
+                        ><i class="fa fa-minus-square" aria-hidden="true"></i>
+                       Books</router-link
+                      >
+                    </li>
                     <li>
                       <router-link :to="{ path: '/dashboard/evaluations' }"
                         ><i class="fa fa-circle" aria-hidden="true"></i>
@@ -59,7 +65,6 @@
         </div>
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pl-0">
-        
         <router-view></router-view>
       </div>
     </div>

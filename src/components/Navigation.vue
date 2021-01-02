@@ -2,7 +2,7 @@
   <nav
     class="navbar navbar-light bg-white justify-content-between fixed-top mb"
   >
-    <div>
+    <div class="logo p-3">
         <router-link :to="{ path: '/' }">
           School Management System
         </router-link>
@@ -13,7 +13,7 @@
         <li class="nav-item mr-4" ><a href="#"><router-link :to="{path: '/student/dashboard'}">Student</router-link> </a></li>
      
       </ul>
-     <div class="mr-4">{{staff.firstname?staff.firstname: student.firstname?student.firstname: ""}}</div>
+     <div class="mr-4">{{this.staff}}</div>
     </div> 
   </nav>
 </template>
@@ -21,20 +21,13 @@
 <script>
 export default {
   name: "navigation",
-  data(){
-    return{
-      student:this.$store.getters.getStudent,
-      staff:this.$store.getters.getStaff
-    }
-  },
-
-  created(){
-    
+  
+  computed:{ 
+staff (){
+return this.$store.getters.staff
+}
 },
-  computed:{
-   
-  }
-};
+}
 </script>
 
 <style scoped>
@@ -43,5 +36,10 @@ a{
 }
 a:visited{
     color: rgb(0, 132, 255);
+}
+.logo{
+  font-weight: 600;
+  border: 1px solid green;
+border-radius: 3rem;
 }
 </style>

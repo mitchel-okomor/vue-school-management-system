@@ -1,5 +1,7 @@
 export default {
-  state: () => ({ student: "" }),
+  state: () => ({ 
+    student: {}
+   }),
   mutations: {},
   actions: {},
   getters: {

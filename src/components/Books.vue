@@ -1,23 +1,27 @@
 <template>
-  <div class="students ml-5">
+  <div class="books ml-5">
      <div class=""><ul class="nav nav-tabs ">
   <li class="nav-item">
   <router-link class="nav-link active" :to="{ path: '/dashboard/school/info' }">
- Profile </router-link>
+ Jss1 </router-link>
   </li>
 <li class="nav-item">
   <router-link class="nav-link " :to="{ path: '/dashboard/school/students' }">
- Academics </router-link>
+ Jss2 </router-link>
   </li>
  <li class="nav-item">
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
- Fees </router-link>
+Jss3 </router-link>
   </li>
     <li class="nav-item">
-    <a class="nav-link" href="#"></a>
+    <a class="nav-link" href="#">SS1</a>
   </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">SS2</a>
+  </li>
+   <li>
+    <li class="nav-item">
+    <a class="nav-link" href="#">SS3</a>
   </li>
 </ul></div>
 
