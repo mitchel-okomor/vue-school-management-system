@@ -71,8 +71,6 @@ axios.post(url, formData, {
     localStorage.setItem("userId", res.data.info.data._id);
           this.$router.push('/dashboard')
 
-    console.log("staff:" +this.staff)
-
 }
 )
 .catch((err)=>{

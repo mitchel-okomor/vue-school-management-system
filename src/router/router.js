@@ -26,22 +26,22 @@ Vue.use(VueRouter);
 
 //check staff authentication
 const ifStaffIsNotAuthenticated = (to, from, next) => {
-  console.log(isLoggedIn)
-  if (isLoggedIn) {
-    next()
-    return
+  console.log(isLoggedIn);
+  if (!isLoggedIn) {
+    next();
+    return;
   }
-  next('/dashboard/overview')
-}
+  next("/dashboard/overview");
+};
 
 const ifStaffIsAuthenticated = (to, from, next) => {
-  console.log(isLoggedIn)
+  console.log(isLoggedIn);
   if (isLoggedIn) {
     next();
     return;
   }
-  next('/staff/login');
-}
+  next("/staff/login");
+};
 
 // //check student authentication
 // const ifStudentIsNotAuthenticated = (to, from, next) => {
@@ -76,7 +76,7 @@ const routes = [
   {
     path: "/staff/login",
     component: StaffLogin,
-     beforeEnter: ifStaffIsNotAuthenticated,
+    beforeEnter: ifStaffIsNotAuthenticated,
   },
   {
     path: "/staff/employ",
@@ -110,11 +110,15 @@ const routes = [
         name: "school",
         component: School,
 
-        children: [{ path: "info", name: "info", component: Info }, {
-          path: "new-info", name: "new-info", component: NewInfo
-        },
-        { path: "", name: "", component: Info },
-      ],
+        children: [
+          { path: "info", name: "info", component: Info },
+          {
+            path: "new-info",
+            name: "new-info",
+            component: NewInfo,
+          },
+          { path: "", name: "", component: Info },
+        ],
       },
       {
         path: "staffs",

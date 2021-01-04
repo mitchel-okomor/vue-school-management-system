@@ -9,11 +9,11 @@
     </div>
     <div class="d-flex">
        <ul class="d-flex" >
-        <li class=" nav-item mr-4" ><a href="#"><router-link :to="{path: '/dashboard'}">Staff</router-link> </a></li>
-        <li class="nav-item mr-4" ><a href="#"><router-link :to="{path: '/student/dashboard'}">Student</router-link> </a></li>
-     
+        <li class=" nav-item mr-4" v-if="!staff.firstname"><a href="#"><router-link :to="{path: '/dashboard'}">Staff</router-link> </a></li>
+        <li class="nav-item mr-4" v-if="!staff.firstname" ><a href="#"><router-link :to="{path: '/student/dashboard'}">Student</router-link> </a></li>
+        <li class=" nav-item mr-4" v-if="staff.firstname"><a href="#"><router-link :to="{path: '/dashboard'}">Dashboard</router-link> </a></li>
       </ul>
-     <div class="mr-4 font-weight-bold">{{staff.firstname}}</div>
+     <div class="mr-4 font-weight-bold"><router-link :to="{path: '/profile'}">{{staff.firstname}}</router-link> </div>
     </div> 
   </nav>
 </template>

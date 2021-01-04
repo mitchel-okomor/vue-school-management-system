@@ -1,10 +1,13 @@
 <template>
-  <div class="">
+  <div class="info">
     <div class="actions mt-5 ml-5">
   <router-link class="nav-link btn btn-secondary" :to="{ path: '/dashboard/school/new-info' }">
  Add Info </router-link>  
     </div>
- <info-list infos="infos"></info-list>
+ <info-list :infoList="infos"></info-list>
+ <div>
+   
+ </div>
   </div>
 </template>
 
@@ -30,5 +33,11 @@ export default {
 .actions a{
   width: fit-content !important;
   
+}
+
+@media screen and (max-width: 860px) {
+  .info{
+    margin-left: 1rem !important;
+  }
 }
 </style>

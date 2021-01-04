@@ -4,7 +4,7 @@
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pr-0">
         <div class="left">
           <div class="dashboard-image mt-5 p-4 ">
-            <img src="../assets/dummy.jpg" />
+            <img src="../assets/dummy.jpg"  class="mt-5"/>
             <h4 class="mt-2">{{staff.firstname? staff.firstname : student.firstname}}</h4>
           </div>
 
@@ -160,5 +160,10 @@ h3 {
 }
 .admit {
   margin-top: 0rem;
+}
+
+@media screen and (max-width: 860px) {
+  .side{
+display: ;  }
 }
 </style>

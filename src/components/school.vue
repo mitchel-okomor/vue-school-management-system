@@ -39,4 +39,10 @@ name: "school"
 a{
   color: black;
 }
+
+@media screen and (max-width: 860px) {
+  .school{
+    margin: 0.1rem !important;
+  }
+}
 </style>

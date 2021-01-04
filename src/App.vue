@@ -100,4 +100,10 @@ form{
   border: 1px solid green;
   border-radius: 0.5em;
 }
+
+@media screen and (max-width: 860px) {
+  .card{
+    margin: 0.5rem !important;
+  }
+}
 </style>
