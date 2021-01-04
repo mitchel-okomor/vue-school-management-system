@@ -6,10 +6,8 @@ export default {
 
 
   state: () => ({
-    school: {
       loading: false,
       info: []
-    },
   }),
   mutations: {
     [SET_SCHOOL](state, payload) {
@@ -60,8 +58,7 @@ commit(SET_LOADING, false);
 
   },
   getters: {
-    info: (state) => {
-      return state.school.info;
-    },
+    getInfo: state => state.info
+    ,
   },
 };

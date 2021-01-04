@@ -7,7 +7,7 @@ export default {
       }),
     mutations: {
         [SET_USER](state, payload) {
-            state.staff = payload;
+            state.user = payload;
           },
     },
     actions: {

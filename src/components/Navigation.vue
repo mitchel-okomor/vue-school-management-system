@@ -13,19 +13,23 @@
         <li class="nav-item mr-4" ><a href="#"><router-link :to="{path: '/student/dashboard'}">Student</router-link> </a></li>
      
       </ul>
-     <div class="mr-4">{{this.staff}}</div>
+     <div class="mr-4 font-weight-bold">{{staff.firstname}}</div>
     </div> 
   </nav>
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: "navigation",
-  
-  computed:{ 
-staff (){
-return this.$store.getters.staff
-}
+  data(){
+    return{
+      user:""
+    }
+  },
+  computed:{
+    ...mapGetters({staff:"getStaff"})
 },
 }
 </script>

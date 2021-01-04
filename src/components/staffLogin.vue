@@ -36,15 +36,15 @@ staff:"",
 }
 },
 computed:{
-checkLogin:()=>{
-if(isLoggedIn()){
-  console.log("loggedIn")
-    this.$store.dispatch(SET_LOGGED_IN, true);}
-}
+
 },
 created:function(){
- this.staff = this.$store.getters.getStaff;
-this.checkLogin();
+if(isLoggedIn()){
+  console.log("loggedIn")
+    this.$store.dispatch(SET_LOGGED_IN, true);
+     this.staff = this.$store.getters.getStaff;
+    }
+
 },
 methods: {
 

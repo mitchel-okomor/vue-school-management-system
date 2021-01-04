@@ -16,30 +16,32 @@ import Evaluations from "../components/Evaluations";
 import Info from "../components/info/Info";
 import NewInfo from "../components/New-info";
 import Books from "../components/Books";
+import checkLogin from "../helpers/checkLogin";
 
+const isLoggedIn = checkLogin();
 
 //import store from '../store/index';
 
 Vue.use(VueRouter);
 
-// //check staff authentication
-// const ifStaffIsNotAuthenticated = (to, from, next) => {
-//   console.log(store.getters.staffIsLoggedIn)
-//   if (!store.getters.staffIsLoggedIn) {
-//     next()
-//     return
-//   }
-//   next('/dashboard')
-// }
+//check staff authentication
+const ifStaffIsNotAuthenticated = (to, from, next) => {
+  console.log(isLoggedIn)
+  if (isLoggedIn) {
+    next()
+    return
+  }
+  next('/dashboard/overview')
+}
 
-// const ifStaffIsAuthenticated = (to, from, next) => {
-//   console.log(store.getters.staffIsLoggedIn)
-//   if (store.getters.staffIsLoggedIn) {
-//     next();
-//     return;
-//   }
-//   next('/staff/login');
-// }
+const ifStaffIsAuthenticated = (to, from, next) => {
+  console.log(isLoggedIn)
+  if (isLoggedIn) {
+    next();
+    return;
+  }
+  next('/staff/login');
+}
 
 // //check student authentication
 // const ifStudentIsNotAuthenticated = (to, from, next) => {
@@ -74,7 +76,7 @@ const routes = [
   {
     path: "/staff/login",
     component: StaffLogin,
-    // beforeEnter: ifStaffIsNotAuthenticated,
+     beforeEnter: ifStaffIsNotAuthenticated,
   },
   {
     path: "/staff/employ",
@@ -87,11 +89,11 @@ const routes = [
     // beforeEnter: ifStudentIsNotAuthenticated
   },
 
-  //admin dashbord routes
+  //staff admin dashbord routes
   {
     path: "/dashboard/",
     component: Dashboard,
-    //  beforeEnter: ifStaffIsAuthenticated,
+    beforeEnter: ifStaffIsAuthenticated,
     children: [
       {
         path: "overview",
@@ -110,7 +112,9 @@ const routes = [
 
         children: [{ path: "info", name: "info", component: Info }, {
           path: "new-info", name: "new-info", component: NewInfo
-        }],
+        },
+        { path: "", name: "", component: Info },
+      ],
       },
       {
         path: "staffs",
@@ -166,7 +170,7 @@ const routes = [
       },
       {
         path: "students",
-        name: "students",
+        name: "student",
         component: Students,
       },
       //default route

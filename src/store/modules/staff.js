@@ -44,7 +44,7 @@ export default {
     },
   },
   getters: {
-    Staff: state => state.staff,
+    getStaff: state => state.staff,
     isLoggedIn: state => state.isLoggedIn,
   },
 };

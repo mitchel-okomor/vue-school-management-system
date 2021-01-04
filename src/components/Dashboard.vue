@@ -5,7 +5,7 @@
         <div class="left">
           <div class="dashboard-image mt-5 p-4 ">
             <img src="../assets/dummy.jpg" />
-            <h3 class="mt-2">{user.firstname}</h3>
+            <h4 class="mt-2">{{staff.firstname? staff.firstname : student.firstname}}</h4>
           </div>
 
           <div class="side  ">
@@ -73,6 +73,7 @@
 
 <script>
 import Logout from "../helpers/Logout";
+import {mapGetters} from 'vuex';
 
 export default {
   name: "dashboard",
@@ -85,6 +86,9 @@ export default {
       Logout();
     },
   },
+  computed:{
+...mapGetters({staff:"getStaff", student:"getStudent"})
+  }
 };
 </script>
 
