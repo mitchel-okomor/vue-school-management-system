@@ -20,13 +20,5 @@ export default {
 </script>
 
 <style scoped>
-span {
-  color: black;
-}
-i {
-  cursor: pointer;
-}
-form{
-  border: none;
-}
+
 </style>

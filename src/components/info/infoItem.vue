@@ -11,8 +11,8 @@
           </div>
         </div>
        
-    <form class="hide" @submit.prevent="handleSubmit(title, description, info._id, $event)">
-  <div class="form-group">
+    <form class="hide p-2" @submit.prevent="handleSubmit(title, description, info._id, $event)">
+  <div class="form-group ">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title"   placeholder="" v-model="title">
   </div>
@@ -65,6 +65,14 @@ deleteInfo(id){
 }
 </script>
 
-<style>
-
+<style scoped>
+span {
+  color: black;
+}
+i {
+  cursor: pointer;
+}
+form{
+  border: none;
+}
 </style>

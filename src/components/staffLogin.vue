@@ -14,6 +14,7 @@
     <input type="password" class="form-control"  placeholder="Password" v-model="password">
     </div>
   </div>
+  <div class="text-danger mb-3">{{message}}</div>
   <button type="submit" class="btn btn-primary">Login</button>
 </form>
   </main>
@@ -33,6 +34,7 @@ return {
 email:"", 
 password:"",
 staff:"",
+message:""
 }
 },
 computed:{
@@ -74,7 +76,15 @@ axios.post(url, formData, {
 }
 )
 .catch((err)=>{
-  console.log(err)
+      const { response } = err;
+if(response.status === 401){
+      this.message = "Email or password incorrect"
+  setTimeout(()=>{
+      this.message = ""
+
+  }, 3000)
+}
+  console.log(response)
 })
   },
 
