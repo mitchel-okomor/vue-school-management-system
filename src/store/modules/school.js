@@ -1,4 +1,4 @@
-import { SET_SCHOOL, ADD_SCHOOL_INFO, SET_LOADING, GET_INFO } from "../../helpers/mutationConstants";
+import { SET_SCHOOL, ADD_SCHOOL_INFO, SET_LOADING, GET_INFO, EDIT_INFO, DELETE_INFO } from "../../helpers/mutationConstants";
 import {SERVER_URL} from '../../helpers/constants'
 import axios from 'axios';
 import router from '../../router/router'
@@ -16,13 +16,22 @@ export default {
     [ADD_SCHOOL_INFO](state, payload) {
       state.school.info = [...state.school.info, payload];
     },
+    [EDIT_INFO](state, info) {
+      const item = state.info.findIndex(item => item._id === info._id);
+      state.info.splice(item, 1, info);
+    },
     [SET_LOADING](state, payload) {
       state.school.loading =  payload;
     },
     [GET_INFO](state, payload){
     state.info = payload;
+    },
+    [DELETE_INFO](state, id){
+  const item = state.info.findIndex(item => item.id === id);
+  state.info.splice(item, 1);
     }
   },
+
   actions: {
     [ADD_SCHOOL_INFO]({commit},info) {
       console.log(info);
@@ -54,9 +63,34 @@ commit(SET_LOADING, false);
           .catch((err)=>{
               console.log(err)
           })
+},
+
+//edit info
+[EDIT_INFO]({commit}, info){
+ const url = SERVER_URL+ "/info/" +info.id;
+ axios.patch(url, info).then((res)=>{
+   console.log(res.data)
+  commit(EDIT_INFO, res.data);
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+
+},
+
+[DELETE_INFO]({commit}, id){
+  const url = SERVER_URL+ "/info/" +id;
+  axios.delete(url).then((res)=>{
+    console.log(res)
+   commit(DELETE_INFO, id);
+     })
+     .catch((err)=>{
+         console.log(err)
+     })
 }
 
   },
+
   getters: {
     getInfo: state => state.info
     ,

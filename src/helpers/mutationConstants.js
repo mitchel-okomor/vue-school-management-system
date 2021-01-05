@@ -6,3 +6,5 @@ export const ADD_SCHOOL_INFO = "ADD_SCHOOL_INFO";
 export const GET_INFO = "GET_INFO";
 export const SET_LOADING = "SET_LOADING";
 export const SET_SCHOOL = "SET_SCHOOL";
+export const EDIT_INFO = "EDIT_INFO";
+export const DELETE_INFO = "DELETE_INFO";

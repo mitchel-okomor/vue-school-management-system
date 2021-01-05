@@ -2,36 +2,20 @@
   <div class="card m-5 mt-1" style="width: 80%">
     <ul class="list-group list-group-flush text-left">
       <li class="list-group-item" v-for="info in infoList" :key="info._id">
-        <div class="row justify-content-between">
-          <div>
-            <span class="mr-4 ml-2 font-weight-bold">{{ info.title }}:</span
-            ><span class="">{{ info.description }}</span>
-          </div>
-          <div>
-            <i class="fa fa-edit mr-4 text-primary" v-on:click="togglePanel(this)"></i
-            ><i class="fa fa-times-circle mr-4 text-danger"></i>
-          </div>
-        </div>
-        <div class="edit" v-if="panelOpen"><input type="test" value=""></div>
+   <info-item :info="info"></info-item>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import InfoItem from './infoItem.vue';
+
+
 export default {
   name: "infoList",
   props: ["infoList"],
-  data() {
-    return {
-    };
-  },
-
-  methods: {
-    togglePanel(el) {
-      console.log(el)
-    },
-  },
+ components: {InfoItem}
 };
 </script>
 
@@ -41,5 +25,8 @@ span {
 }
 i {
   cursor: pointer;
+}
+form{
+  border: none;
 }
 </style>
