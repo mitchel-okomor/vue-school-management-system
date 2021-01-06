@@ -2,6 +2,8 @@
   <main class="admit d-flex justify-content-center">
         <form class="" action="#"  @submit.prevent="loginstaff(email, password)">
         <div class="mb-3"><h3>Staff Login</h3></div>
+
+        <div><h6 class="text-primary"> Test with <br /> Email: admin, Password: admin</h6></div>
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail4">Email:</label>
@@ -50,7 +52,7 @@ if(isLoggedIn()){
 },
 methods: {
 
-  loginstaff( email, password){
+ async loginstaff( email, password){
 
 //collect all inputs with FormData (just in case file will be upploaded)
 const formData = {email, password}
@@ -66,14 +68,15 @@ axios.post(url, formData, {
       })
 .then((res)=>{
   console.log(res.data.info);
+    localStorage.setItem("token", res.data.info.token);
+  localStorage.setItem("userId", res.data.info.data._id);
   this.$store.dispatch(SET_STAFF, res.data.info.data);
   this.$store.dispatch(SET_LOGGED_IN, true);
-    localStorage.setItem("token", res.data.info.token);
-  this.$store.dispatch(SET_USER, {name:res.data.info.data.firstname, type:"staff" });
-  localStorage.setItem("userId", res.data.info.data._id);
-          this.$router.push('/dashboard');
+   this.$store.dispatch(SET_USER, {name:res.data.info.data.firstname, type:"staff" });
 }
-)
+).then(()=>{
+  this.$router.push('/dashboard');
+})
 .catch((err)=>{
       const { response } = err;
 if(response.status === 401){

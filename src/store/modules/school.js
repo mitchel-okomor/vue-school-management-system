@@ -39,9 +39,8 @@ export default {
       const url = SERVER_URL+ "/info"
 axios.post(url, info, {
         headers: {
-      }}, {
-        timeout: 30000,
-      }).then((res)=>{
+          "Authorization": localStorage.getItem('token')
+      }}, ).then((res)=>{
         commit(ADD_SCHOOL_INFO, res.data.data)
         commit(SET_LOADING, false);
         alert('Request completed!');
@@ -57,7 +56,12 @@ commit(SET_LOADING, false);
 //info
 [GET_INFO]({commit}){
     const url = SERVER_URL+ "/info"
-    axios.get(url).then((res)=>{
+    axios.get(url,
+      {
+        headers: {
+          "Authorization": localStorage.getItem('token')
+      }},
+      ).then((res)=>{
         commit(GET_INFO, res.data);
           })
           .catch((err)=>{
@@ -68,7 +72,10 @@ commit(SET_LOADING, false);
 //edit info
 [EDIT_INFO]({commit}, info){
  const url = SERVER_URL+ "/info/" +info.id;
- axios.patch(url, info).then((res)=>{
+ axios.patch(url, info,   {
+  headers: {
+    "Authorization": localStorage.getItem('token')
+}},).then((res)=>{
    console.log(res.data)
   commit(EDIT_INFO, res.data);
     })
@@ -80,7 +87,11 @@ commit(SET_LOADING, false);
 
 [DELETE_INFO]({commit}, id){
   const url = SERVER_URL+ "/info/" +id;
-  axios.delete(url).then((res)=>{
+  axios.delete(url,
+    {
+      headers: {
+        "Authorization": localStorage.getItem('token')
+    }},).then((res)=>{
     console.log(res)
    commit(DELETE_INFO, id);
      })

@@ -5,7 +5,14 @@
   <router-link class="nav-link active" :to="{ path: '/dashboard/school/info' }">
  Info </router-link>
   </li>
+   <li class="nav-item">
+    <router-link class="nav-link" :to="{path: '/dashboard/school/employ'}">Employ</router-link> 
+  </li>
+   <li class="nav-item">
+    <router-link class="nav-link" :to="{path: '/dashboard/school/register'}">Register Student</router-link> 
+  </li>
 <li class="nav-item">
+  
   <router-link class="nav-link " :to="{ path: '/dashboard/school/students' }">
  Students </router-link>
   </li>
@@ -13,9 +20,7 @@
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
  Staffs </router-link>
   </li>
-    <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
+   
     <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
   </li>

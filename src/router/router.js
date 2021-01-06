@@ -20,28 +20,28 @@ import checkLogin from "../helpers/checkLogin";
 
 const isLoggedIn = checkLogin();
 
-//import store from '../store/index';
+import store from '../store/index';
 
 Vue.use(VueRouter);
 
-// //check staff authentication
-// const ifStaffIsNotAuthenticated = (to, from, next) => {
-//   console.log(isLoggedIn);
-//   if (!isLoggedIn) {
-//     next();
-//     return;
-//   }
-//   next("/dashboard/overview");
-// };
+//check staff authentication
+const ifStaffIsNotAuthenticated = (to, from, next) => {
+  console.log(isLoggedIn );
+  if (!isLoggedIn || store.getters.isLoggedIn) {
+    next();
+    return;
+  }
+  next("/dashboard/overview");
+};
 
-// const ifStaffIsAuthenticated = (to, from, next) => {
-//   console.log(isLoggedIn);
-//   if (isLoggedIn) {
-//     next();
-//     return;
-//   }
-//   next("/staff/login");
-// };
+const ifStaffIsAuthenticated = (to, from, next) => {
+  console.log(isLoggedIn );
+  if (isLoggedIn || store.getters.isLoggedIn) {
+    next();
+    return;
+  }
+  next("/staff/login");
+};
 
 // //check student authentication
 // const ifStudentIsNotAuthenticated = (to, from, next) => {
@@ -118,6 +118,8 @@ const routes = [
             component: NewInfo,
           },
           { path: "", name: "", component: Info },
+          {path:"employ", name:"employ", component: StaffRegister},
+          {path: "register", name:"register", component: Admit}
         ],
       },
       {
@@ -157,7 +159,7 @@ const routes = [
       {
         path: "",
         name: "",
-        component: School,
+        component: Overview,
       },
     ],
   },

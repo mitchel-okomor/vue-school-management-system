@@ -11,14 +11,12 @@
   </li>
  <li class="nav-item">
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
- Fees </router-link>
+ Fees Info</router-link>
   </li>
     <li class="nav-item">
-    <a class="nav-link" href="#"></a>
+    <a class="nav-link" href="#">Actions</a>
   </li>
-    <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
+ 
 </ul></div>
 
         <router-view></router-view>

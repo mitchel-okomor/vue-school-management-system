@@ -3,21 +3,21 @@
      <div class=""><ul class="nav nav-tabs ">
   <li class="nav-item">
   <router-link class="nav-link active" :to="{ path: '/dashboard/school/info' }">
- Info </router-link>
+ Profile </router-link>
   </li>
 <li class="nav-item">
   <router-link class="nav-link " :to="{ path: '/dashboard/school/students' }">
- Students </router-link>
+ Class </router-link>
   </li>
  <li class="nav-item">
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
- Staffs </router-link>
+ Students Taken </router-link>
   </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Salary info</a>
   </li>
     <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Actions</a>
   </li>
 </ul></div>
 

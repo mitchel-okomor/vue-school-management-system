@@ -30,7 +30,11 @@ export default {
     [GET_STAFF]({ commit }) {
       const url = SERVER_URL + "/staff/" + localStorage.getItem("userId");
       axios
-        .get(url)
+        .get(url,
+          {
+            headers: {
+              "Authorization": localStorage.getItem('token')
+          }},)
         .then((res) => {
           commit(SET_STAFF, res.data);
         })
