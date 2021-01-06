@@ -51,12 +51,12 @@
       </select>
     </div>
    <div class="form-group col-md-6" v-if="category === 'Academic'">
-       <div>Subjects</div>
-    <div class="form-check">
- <div class="mb-1"><label class="form-check-label" for="exampleCheck1">English</label> 
+       <div class="mt-4">Subjects</div>
+    <div class="form-check ">
+ <div class="mb-1 row"><label class="form-check-label" for="exampleCheck1">English</label> 
     <input type="checkbox" class="form-check-input" value="english" id="exampleCheck1" v-model="subjects">
     </div>   
-<div><label class="form-check-label" for="exampleCheck1">Mathematics</label> 
+<div class="row"><label class="form-check-label" for="exampleCheck1">Mathematics</label> 
     <input type="checkbox" class="form-check-input" value="mathematics" id="exampleCheck1" v-model="subjects">
   </div>    
 </div>
@@ -163,8 +163,7 @@ form{
 width: 50%;
 }
 label{
-margin-top:0.5rem ;
-margin-bottom: 0.1rem;
+
 }
 .form-check-label{
 width: fit-content;
