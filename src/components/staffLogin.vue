@@ -68,11 +68,10 @@ axios.post(url, formData, {
   console.log(res.data.info);
   this.$store.dispatch(SET_STAFF, res.data.info.data);
   this.$store.dispatch(SET_LOGGED_IN, true);
-  this.$store.dispatch(SET_USER, {name:res.data.info.data.firstname, type:"staff" })
-  localStorage.setItem("token", res.data.info.token);
-    localStorage.setItem("userId", res.data.info.data._id);
-          this.$router.push('/dashboard')
-
+    localStorage.setItem("token", res.data.info.token);
+  this.$store.dispatch(SET_USER, {name:res.data.info.data.firstname, type:"staff" });
+  localStorage.setItem("userId", res.data.info.data._id);
+          this.$router.push('/dashboard');
 }
 )
 .catch((err)=>{
