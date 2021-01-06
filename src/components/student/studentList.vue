@@ -1,38 +1,46 @@
 <template>
-<table class="table table-borderless">
-  <thead>
-    <tr>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr class="">
       <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Venue</th>
-      <th scope="col">Date</th>
-      <th scope="col">Status</th>
-      <th scope="col">Publish</th>
-      <th scope="col">Complete</th>
-      <th scope="col">Action</th>
-
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Class</th>
+      <th scope="col">Address</th>
+      <th scope="col">State of origin</th>
     </tr> 
   </thead>
   <tbody>
-       <student-list-item :studentList="students"></student-list-item>
-
+<tr v-for="(student, index) in students" :key="student._id">
+  <th>{{index + 1}}</th>
+<td >{{student.firstname}}</td>
+<td >{{student.lastname}}</td>
+<td >{{student.phone}}</td>
+<td >{{student.subject_class}}</td>
+<td >{{student.address}}</td>
+<td >{{student.state_of_origin}}</td>
+</tr>
   </tbody>
 </table>
-   
+   </div>
 </template>
 
 <script>
-import StudentListItem from './studentListItem.vue';
 
 export default {
-  name: "studentListItem",
+  name: "studentList",
   props: ["students"],
-components: {StudentListItem}
 
 
 };
 </script>
 
 <style scoped>
-
+@media screen and (max-width: 860px) {
+  .table{
+    font-size: small;
+ }
+}
 </style>
