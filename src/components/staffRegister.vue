@@ -75,7 +75,7 @@
      <label for="inputCity">passport</label>
 <input type="file" ref="file" placeholder="passport" v-on:change="handleFileUpload()"/>  </div>
   </div>
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button type="submit" class="btn btn-primary">Employ</button>
 </form>
   </main>
 </template>
@@ -162,9 +162,7 @@ form{
   margin-top: 3rem;
 width: 50%;
 }
-label{
 
-}
 .form-check-label{
 width: fit-content;
 }

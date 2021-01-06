@@ -164,6 +164,8 @@ h3 {
 
 @media screen and (max-width: 860px) {
   .side{
-display: ;  }
+    height: fit-content;
+    padding-bottom: 1rem;
+ }
 }
 </style>

@@ -14,7 +14,7 @@
     </tr> 
   </thead>
   <tbody>
-       <student-list-item ></student-list-item>
+       <student-list-item :studentList="students"></student-list-item>
 
   </tbody>
 </table>
@@ -22,13 +22,14 @@
 </template>
 
 <script>
-//import StudentListItem from './studentListItem.vue';
-
+import StudentListItem from './studentListItem.vue';
 
 export default {
   name: "studentListItem",
   props: ["students"],
-//components: {StudentListItem}
+components: {StudentListItem}
+
+
 };
 </script>
 
