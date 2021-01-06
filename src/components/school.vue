@@ -6,7 +6,7 @@
  Info </router-link>
   </li>
    <li class="nav-item">
-    <router-link class="nav-link" :to="{path: '/dashboard/school/employ'}">Employ</router-link> 
+    <router-link class="nav-link" :to="{path: '/dashboard/school/employ'}">Employ Staff</router-link> 
   </li>
    <li class="nav-item">
     <router-link class="nav-link" :to="{path: '/dashboard/school/register'}">Register Student</router-link> 
@@ -14,11 +14,11 @@
 <li class="nav-item">
   
   <router-link class="nav-link " :to="{ path: '/dashboard/school/students' }">
- Students </router-link>
+ Student List </router-link>
   </li>
  <li class="nav-item">
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
- Staffs </router-link>
+ Staff List </router-link>
   </li>
    
     <li class="nav-item">

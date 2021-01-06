@@ -1,4 +1,4 @@
-import { SET_SCHOOL, ADD_SCHOOL_INFO, SET_LOADING, GET_INFO, EDIT_INFO, DELETE_INFO } from "../../helpers/mutationConstants";
+import { SET_SCHOOL, ADD_SCHOOL_INFO, SET_LOADING, GET_INFO, EDIT_INFO, DELETE_INFO, GET_STUDENTS } from "../../helpers/mutationConstants";
 import {SERVER_URL} from '../../helpers/constants'
 import axios from 'axios';
 import router from '../../router/router'
@@ -7,8 +7,11 @@ export default {
 
   state: () => ({
       loading: false,
-      info: []
+      info: [],
+      students: [],
   }),
+
+  //changes
   mutations: {
     [SET_SCHOOL](state, payload) {
       state.school = payload;
@@ -29,9 +32,13 @@ export default {
     [DELETE_INFO](state, id){
   const item = state.info.findIndex(item => item.id === id);
   state.info.splice(item, 1);
+    },
+    [GET_STUDENTS](state, payload){
+      state.students = payload
     }
   },
 
+  //commit changes
   actions: {
     [ADD_SCHOOL_INFO]({commit},info) {
       console.log(info);
@@ -69,6 +76,7 @@ commit(SET_LOADING, false);
           })
 },
 
+
 //edit info
 [EDIT_INFO]({commit}, info){
  const url = SERVER_URL+ "/info/" +info.id;
@@ -98,12 +106,29 @@ commit(SET_LOADING, false);
      .catch((err)=>{
          console.log(err)
      })
-}
+},
+
+[GET_STUDENTS]({commit}){
+  const url = SERVER_URL+ "/students";
+  axios.get(url,
+    {
+      headers: {
+        "Authorization": localStorage.getItem('token')
+    }},
+    ).then((res)=>{
+      commit(GET_STUDENTS, res.data);
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+},
 
   },
 
+
+//get state data
   getters: {
-    getInfo: state => state.info
-    ,
+    getInfo: state => state.info,
+    students: state => state.students
   },
 };

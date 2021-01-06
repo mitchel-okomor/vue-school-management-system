@@ -8,3 +8,4 @@ export const SET_LOADING = "SET_LOADING";
 export const SET_SCHOOL = "SET_SCHOOL";
 export const EDIT_INFO = "EDIT_INFO";
 export const DELETE_INFO = "DELETE_INFO";
+export const GET_STUDENTS = "GET_STUDENTS";

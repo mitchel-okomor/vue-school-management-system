@@ -16,6 +16,7 @@ import Evaluations from "../components/Evaluations";
 import Info from "../components/info/Info";
 import NewInfo from "../components/New-info";
 import Books from "../components/Books";
+import StudentList from "../components/student/students"
 import checkLogin from "../helpers/checkLogin";
 
 const isLoggedIn = checkLogin();
@@ -107,7 +108,6 @@ const routes = [
       },
       {
         path: "school/",
-        name: "school",
         component: School,
 
         children: [
@@ -117,9 +117,10 @@ const routes = [
             name: "new-info",
             component: NewInfo,
           },
-          { path: "", name: "", component: Info },
-          {path:"employ", name:"employ", component: StaffRegister},
-          {path: "register", name:"register", component: Admit}
+          { path: "", name: "school-info", component: Info },
+          {path:"employ", name:"employ-staff", component: StaffRegister},
+          {path: "register", name:"register-student", component: Admit},
+          {path: "students", name:"students-list", component: StudentList}
         ],
       },
       {

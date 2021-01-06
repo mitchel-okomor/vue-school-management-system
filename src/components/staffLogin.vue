@@ -3,7 +3,7 @@
         <form class="" action="#"  @submit.prevent="loginstaff(email, password)">
         <div class="mb-3"><h3>Staff Login</h3></div>
 
-        <div><h6 class="text-primary"> Test with <br /> Email: admin, Password: admin</h6></div>
+        <div><h6 class="text-primary"> Test with <br /> Email: admin@sms.com, Password: admin</h6></div>
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="inputEmail4">Email:</label>
