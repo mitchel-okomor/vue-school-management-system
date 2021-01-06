@@ -25,4 +25,10 @@ main {
     margin-top: 7rem;
     margin-bottom: 4rem;
 }
+
+@media screen and (max-width: 860px) {
+ .welcome{
+   width: 100%;
+ }
+}
 </style>
