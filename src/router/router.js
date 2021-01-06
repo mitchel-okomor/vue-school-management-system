@@ -55,8 +55,8 @@ const ifStaffIsAuthenticated = (to, from, next) => {
 // }
 
 const ifStudentIsAuthenticated = (to, from, next) => {
-  console.log(store.getters.staffIsLoggedIn)
-  if (store.getters.staffIsLoggedIn) {
+  console.log(isLoggedIn );
+  if (isLoggedIn || store.getters.isLoggedIn) {
     next()
     return
   }
@@ -168,13 +168,12 @@ const routes = [
   {
     path: "/student/dashboard/",
     component: studentDashboard,
-    // beforeEnter: ifStudentIsAuthenticated,
+     beforeEnter: ifStudentIsAuthenticated,
     children: [
       {
         path: "overview",
         name: "student-overview",
         component: Overview,
-        beforeEnter: ifStudentIsAuthenticated
       },
       {
         path: "students",
