@@ -109,5 +109,11 @@ form{
   .card{
     margin: 0.5rem !important;
   }
+
+
+  form{
+    width: 100% !important;
+  
+}
 }
 </style>
