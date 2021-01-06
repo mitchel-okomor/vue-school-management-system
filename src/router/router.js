@@ -54,14 +54,14 @@ const ifStaffIsAuthenticated = (to, from, next) => {
 //   next('/sudent/dashboard');
 // }
 
-// const ifStudentIsAuthenticated = (to, from, next) => {
-//   console.log(store.getters.staffIsLoggedIn)
-//   if (store.getters.staffIsLoggedIn) {
-//     next()
-//     return
-//   }
-//   next('/student/login');
-// }
+const ifStudentIsAuthenticated = (to, from, next) => {
+  console.log(store.getters.staffIsLoggedIn)
+  if (store.getters.staffIsLoggedIn) {
+    next()
+    return
+  }
+  next('/student/login');
+}
 
 const routes = [
   {
@@ -174,6 +174,7 @@ const routes = [
         path: "overview",
         name: "student-overview",
         component: Overview,
+        beforeEnter: ifStudentIsAuthenticated
       },
       {
         path: "students",
