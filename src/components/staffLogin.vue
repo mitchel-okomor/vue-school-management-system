@@ -1,6 +1,6 @@
 <template>
   <main class="admit d-flex justify-content-center">
-        <form class="" action="#"  @submit.prevent="loginstaff(email, password)">
+        <form class="" action="#"  @submit.prevent="loginstaff(email, password)" v-if="!loading">
         <div class="mb-3"><h3>Staff Login</h3></div>
 
         <div><h6 class="text-primary"> Test with <br /> Email: admin@sms.com, Password: admin</h6></div>
@@ -19,18 +19,22 @@
   <div class="text-danger mb-3">{{message}}</div>
   <button type="submit" class="btn btn-primary">Login</button>
 </form>
+<loading v-if="loading"></loading>
   </main>
 </template>
 
 <script>
 import axios from 'axios';
 import {SERVER_URL} from '../helpers/constants';
-import {SET_STAFF, SET_LOGGED_IN, SET_USER} from '../helpers/mutationConstants';
+import {SET_STAFF, SET_LOGGED_IN, SET_USER, SET_LOADING} from '../helpers/mutationConstants';
 import isLoggedIn from '../helpers/checkLogin';
+import {mapGetters} from 'vuex';
+import Loading from './loading';
 
 export default {
 name: "staffLogin",
 props: "staff",
+components: {Loading},
 data() {
 return {
 email:"", 
@@ -39,9 +43,11 @@ staff:"",
 message:""
 }
 },
-computed:{
 
+computed:{
+...mapGetters({loading:"loading"})
 },
+
 created:function(){
 if(isLoggedIn()){
   console.log("loggedIn")
@@ -58,8 +64,9 @@ methods: {
 const formData = {email, password}
 
 console.log(formData);
-const url = SERVER_URL+ "/staff/login"
+const url = SERVER_URL+ "/staff/login";
 
+this.$store.dispatch(SET_LOADING, true)
 axios.post(url, formData, {
         headers: {
 
@@ -72,12 +79,16 @@ axios.post(url, formData, {
   localStorage.setItem("userId", res.data.info.data._id);
   this.$store.dispatch(SET_STAFF, res.data.info.data);
   this.$store.dispatch(SET_LOGGED_IN, true);
+       this.$store.dispatch(SET_LOADING, false)
    this.$store.dispatch(SET_USER, {name:res.data.info.data.firstname, type:"staff" });
 }
 ).then(()=>{
+
   this.$router.push('/dashboard');
+
 })
 .catch((err)=>{
+  this.$store.dispatch(SET_LOADING, false)
       const { response } = err;
 if(response.status === 401){
       this.message = "Email or password incorrect"
@@ -112,5 +123,6 @@ label{
 margin-top:0.5rem ;
 margin-bottom: 0.1rem;
 }
+
 
 </style>

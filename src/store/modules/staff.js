@@ -19,6 +19,7 @@ export default {
     [SET_LOGGED_IN](state, payload) {
       state.isLoggedIn = payload;
     },
+
   },
   actions: {
     //save staff to state
@@ -46,6 +47,7 @@ export default {
     [SET_LOGGED_IN]({ commit }, payload) {
       commit(SET_LOGGED_IN, payload);
     },
+   
   },
   getters: {
     getStaff: state => state.staff,

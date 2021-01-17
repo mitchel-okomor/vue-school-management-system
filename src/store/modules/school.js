@@ -24,7 +24,8 @@ export default {
       state.info.splice(item, 1, info);
     },
     [SET_LOADING](state, payload) {
-      state.school.loading =  payload;
+      console.log("mutation")
+      state.loading =  payload;
     },
     [GET_INFO](state, payload){
     state.info = payload;
@@ -123,12 +124,17 @@ commit(SET_LOADING, false);
         })
 },
 
+[SET_LOADING]({commit}, payload){
+  commit(SET_LOADING, payload)
+},
+
   },
 
 
 //get state data
   getters: {
     getInfo: state => state.info,
-    students: state => state.students
+    students: state => state.students,
+    loading: state => state.loading
   },
 };

@@ -1,5 +1,10 @@
 <template>
 <div class="table-responsive">
+<form class="form-inline mb-5">
+  <input class="form-control form-control-sm mr-2 w-75" type="text" placeholder="Search"
+    aria-label="Search">
+</form>
+
 <table class="table table-bordered table-striped">
   <thead class="thead-dark">
     <tr class="">
@@ -38,6 +43,13 @@ export default {
 </script>
 
 <style scoped>
+form{
+  width: 50%;
+border: none;
+}
+
+
+
 @media screen and (max-width: 860px) {
   .table{
     font-size: small;
