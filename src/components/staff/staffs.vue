@@ -1,8 +1,8 @@
 <template>
-  <div class="students">
+  <div class="staffs">
     <div class="actions mt-5 ml-5">
     </div>
- <student-list :students="students"></student-list>
+ <staff-list :staffs="staffs"></staff-list>
  <div>
    
  </div>
@@ -10,16 +10,17 @@
 </template>
 
 <script>
-import StudentList from './studentList.vue';
+import StaffList from './staffList';
 import {mapGetters} from 'vuex';
 
+
 export default {
-  name: "students",
-  components: {StudentList},
+  name: "staffs",
+  components: {StaffList},
  
 
   computed:{
-   ...mapGetters({students:"students"})
+   ...mapGetters({staffs:"staffs"})
   }
 };
 </script>
@@ -31,7 +32,8 @@ export default {
 }
 
 @media screen and (max-width: 860px) {
-  .students{
+  .staffs{
+    margin-top: 3rem;
     margin-left: 1rem !important;
   }
 }

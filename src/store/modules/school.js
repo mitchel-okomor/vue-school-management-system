@@ -1,4 +1,4 @@
-import { SET_SCHOOL, ADD_SCHOOL_INFO, SET_LOADING, GET_INFO, EDIT_INFO, DELETE_INFO, GET_STUDENTS } from "../../helpers/mutationConstants";
+import { SET_SCHOOL, ADD_SCHOOL_INFO, SET_LOADING, GET_INFO, EDIT_INFO, DELETE_INFO, GET_STUDENTS, GET_STAFFS } from "../../helpers/mutationConstants";
 import {SERVER_URL} from '../../helpers/constants'
 import axios from 'axios';
 import router from '../../router/router'
@@ -9,6 +9,7 @@ export default {
       loading: false,
       info: [],
       students: [],
+      staffs: []
   }),
 
   //changes
@@ -36,6 +37,9 @@ export default {
     },
     [GET_STUDENTS](state, payload){
       state.students = payload
+    },
+    [GET_STAFFS](state, payload){
+      state.staffs = payload
     }
   },
 
@@ -124,6 +128,21 @@ commit(SET_LOADING, false);
         })
 },
 
+[GET_STAFFS]({commit}){
+  const url = SERVER_URL+ "/staffs";
+  axios.get(url,
+    {
+      headers: {
+        "Authorization": localStorage.getItem('token')
+    }},
+    ).then((res)=>{
+      commit(GET_STAFFS, res.data);
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+},
+
 [SET_LOADING]({commit}, payload){
   commit(SET_LOADING, payload)
 },
@@ -135,6 +154,9 @@ commit(SET_LOADING, false);
   getters: {
     getInfo: state => state.info,
     students: state => state.students,
+    totalStudents: state => state.students.length,
+    staffs: state => state.staffs,
+    totalStaffs: state => state.staffs.length,
     loading: state => state.loading
   },
 };

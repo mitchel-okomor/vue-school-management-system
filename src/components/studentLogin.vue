@@ -14,7 +14,7 @@
     <input type="password" class="form-control"  placeholder="Password" v-model="password">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Login</button>
+  <button type="submit" class="btn btn-primary"><span v-if="loading">Loading...</span> <span v-if="!loading">Login</span> </button>
 </form>
   </main>
 </template>
@@ -22,6 +22,7 @@
 <script>
 import axios from 'axios';
 import {SERVER_URL} from '../helpers/constants';
+import {mapGetters} from 'vuex';
 
 export default {
 name: "studentLogin",
@@ -32,6 +33,11 @@ email:"",
 password:"",
 }
 },
+compute:{
+...mapGetters({ loading: "loading"}),
+
+},
+
 methods: {
 
   loginstaff( email, password){

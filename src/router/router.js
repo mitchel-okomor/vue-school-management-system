@@ -12,6 +12,7 @@ import StaffRegister from "../components/staffRegister";
 import StudentLogin from "../components/studentLogin";
 import School from "../components/school";
 import Staffs from "../components/Staffs";
+import StaffList from "../components/staff/staffs";
 import Evaluations from "../components/Evaluations";
 import Info from "../components/info/Info";
 import NewInfo from "../components/New-info";
@@ -120,7 +121,8 @@ const routes = [
           { path: "", name: "school-info", component: Info },
           {path:"employ", name:"employ-staff", component: StaffRegister},
           {path: "register", name:"register-student", component: Admit},
-          {path: "students", name:"students-list", component: StudentList}
+          {path: "students", name:"students-list", component: StudentList},
+          {path: "staffs", name: "staff-list", component: StaffList}
         ],
       },
       {
