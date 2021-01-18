@@ -18,7 +18,7 @@ Go back</router-link>
 </template>
 
 <script>
-import {ADD_SCHOOL_INFO} from '../helpers/mutationConstants';
+import {ADD_SCHOOL_INFO} from '../../helpers/mutationConstants';
 
 export default {
   name: "new-info",

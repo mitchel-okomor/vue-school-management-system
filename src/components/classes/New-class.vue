@@ -1,7 +1,7 @@
 <template>
-  <div class="">
-    <h2 class="mt-5 text-primary"><u>Add new subject</u></h2>
-  <router-link class="nav-link goback text-primary " :to="{ path: '/dashboard/school/subjects' }">    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+  <div class="mt-5">
+  <h3> Add new class</h3>
+  <router-link class="nav-link goback text-primary " :to="{ path: '/dashboard/school/subject' }">    <i class="fa fa-arrow-left" aria-hidden="true"></i>
 Go back</router-link>
  <form  @submit.prevent="handleSubmit(title)">
   <div class="form-group">
@@ -9,29 +9,27 @@ Go back</router-link>
     <input type="text" class="form-control" id="title" placeholder="Enter title" v-model="title">
   </div>
 
-    <button type="submit" :disabled="loading" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
   </div>
 </template>
 
 <script>
-import {ADD_SUBJECT} from '../../helpers/mutationConstants';
-import {mapGetters} from 'vuex';
+import {ADD_CLASS} from '../../helpers/mutationConstants';
+
 export default {
-  name: "new-subject",
+  name: "new-class",
   data(){
       return{
           title:""
       }
   },
-computed:{
-  ...mapGetters({loading:"loading"})
-},
+
 
   methods:{ 
     handleSubmit(title){
           console.log(title)
-   this.$store.dispatch(ADD_SUBJECT,{title});
+   this.$store.dispatch(ADD_CLASS,{title});
       }
   }
 };

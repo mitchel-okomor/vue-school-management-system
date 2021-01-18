@@ -21,6 +21,8 @@ import StudentList from "../components/student/students"
 import checkLogin from "../helpers/checkLogin";
 import Subject from "../components/subject/subject";
 import NewSubject from "../components/subject/New-subject";
+import Classes from "../components/classes/class";
+import NewClass from "../components/classes/New-class";
 
 const isLoggedIn = checkLogin();
 
@@ -118,7 +120,9 @@ const routes = [
           {path: "new-info", name: "new-info", component: NewInfo, },
           { path: "", name: "school-info", component: Info },
           { path: "subjects", name: "subjects", component: Subject },
-          {path: "new-subject", name: "new-subject", component: NewSubject, },
+          {path: "new-subject", name: "new-subject", component: NewSubject },
+          { path: "classes", name: "classes", component: Classes },
+          {path: "new-class", name: "new-class", component: NewClass },
           {path:"employ", name:"employ-staff", component: StaffRegister},
           {path: "register", name:"register-student", component: Admit},
           {path: "students", name:"students-list", component: StudentList},
