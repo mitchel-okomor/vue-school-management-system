@@ -40,16 +40,10 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import {GET_STAFFS, GET_STUDENTS} from '../helpers/mutationConstants';
 
 export default {
 name: "overview",
 
-created(){
-   this.$store.dispatch(GET_STAFFS);
-   this.$store.dispatch(GET_STUDENTS);
-
-},
 
 computed: {
   ...mapGetters({totalStudents:"totalStudents", totalStaffs: "totalStaffs", loading:"loading"})

@@ -74,12 +74,19 @@
 <script>
 import Logout from "../helpers/Logout";
 import {mapGetters} from 'vuex';
+import {GET_STAFFS, GET_STUDENTS} from '../helpers/mutationConstants';
+
 
 export default {
   name: "dashboard",
   data() {
     return {};
   },
+created(){
+   this.$store.dispatch(GET_STAFFS);
+   this.$store.dispatch(GET_STUDENTS);
+
+},
 
   methods: {
     logoutUser: () => {
@@ -93,8 +100,6 @@ export default {
 </script>
 
 <style scoped>
-.admin {
-}
 
 .dashboard-image {
   background-color: white;

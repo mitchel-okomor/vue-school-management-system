@@ -76,7 +76,8 @@
  <div class="form-row">
   <div class="form-group col-md-6">
      <label for="inputCity">passport</label>
-<input type="file" ref="file" placeholder="passport" v-on:change="handleFileUpload()"/>  </div>
+<div class="image-preview"><img v-if="passport" /></div>
+<input type="file"  placeholder="passport" v-on:change="handleFileUpload"/>  </div>
   </div>
   <button type="submit" class="btn btn-primary">Register</button>
 </form>
@@ -103,13 +104,22 @@ password:"",
 confirm_password:"",
 date_of_birth:"", 
 subject_class:"",
-passport:""
+passport: null
 }
 },
+
 methods: {
 
- handleFileUpload(){
-    this.passport = this.$refs.file.files[0];
+ handleFileUpload(e){
+    this.passport = e.target.files[0];
+
+     const reader = new FileReader();
+            reader.onload = function () {
+                const el = document.querySelector(".image-preview > img");
+                el.src = reader.result;
+            };
+            reader.readAsDataURL(this.passport);
+        
   },
   registerStudent(firstname, lastname, address, state_of_residence, state_of_origin , phone, email, password, date_of_birth, subject_class, passport, confirm_password){
 if(password != confirm_password){
@@ -170,5 +180,9 @@ width: 50%;
 label{
 margin-top:0.5rem ;
 margin-bottom: 0.1rem;
+}
+
+.image-preview img{
+  width: 12rem;
 }
 </style>

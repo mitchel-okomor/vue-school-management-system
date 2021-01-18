@@ -20,10 +20,7 @@
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
  Staff List </router-link>
   </li>
-   
-    <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
+  
 </ul></div>
 
         <router-view></router-view>
