@@ -20,6 +20,14 @@
   <router-link class="nav-link " :to="{ path: '/dashboard/school/staffs' }">
  Staff List </router-link>
   </li>
+   <li class="nav-item">
+  <router-link class="nav-link " :to="{ path: '/dashboard/school/classes' }">
+Classess </router-link>
+  </li>
+   <li class="nav-item">
+  <router-link class="nav-link " :to="{ path: '/dashboard/school/subjects' }">
+ Subjects </router-link>
+  </li>
   
 </ul></div>
 
