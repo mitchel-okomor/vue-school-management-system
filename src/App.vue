@@ -1,62 +1,70 @@
 <template>
   <div id="app">
-<Navigation />
-          <router-view></router-view>
-<Footer />
+    <Navigation />
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Footer from './components/Footer.vue';
+import Footer from "./components/Footer.vue";
 //import Home from './components/Home.vue';
-import Navigation from './components/Navigation.vue';
+import Navigation from "./components/Navigation.vue";
 //import Admit from './components/Admit';
-import isLoggedIn from './helpers/checkLogin';
-import {GET_STAFF, SET_LOGGED_IN, SET_USER} from './helpers/mutationConstants';
+import isLoggedIn from "./helpers/checkLogin";
+import isStudentLoggedIn from "./helpers/checkStudentLogin";
+
+import {
+  GET_STAFF,
+  GET_STUDENT,
+  SET_LOGGED_IN,
+} from "./helpers/mutationConstants";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Footer,
-   Navigation
+    Navigation,
   },
-  data(){
-return{
-
-}
+  data() {
+    return {};
   },
 
-created(){
-if(this.checkLoggin()){
-  console.log("loggedIn")
-  this.$store.dispatch(GET_STAFF);
+  created() {
+    if (this.checkLoggin()) {
+      console.log("loggedIn");
+      this.$store.dispatch(GET_STAFF);
       this.$store.dispatch(SET_LOGGED_IN, true);
-        this.$store.dispatch(SET_USER);
-}
-},
-
-
-  methods:{
-    checkLoggin: ()=>{
-      return isLoggedIn();
+    }
+    if (this.checkStudentLoggin()) {
+      console.log("student is loggedin");
+      this.$store.dispatch(GET_STUDENT);
+      this.$store.dispatch(SET_LOGGED_IN, true);
     }
   },
 
-
-}
+  methods: {
+    checkLoggin: () => {
+      return isLoggedIn();
+    },
+    checkStudentLoggin: () => {
+      return isStudentLoggedIn();
+    },
+  },
+};
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-      background-image:url("./assets/school.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      min-height: 100vh;
+  background-image: url("./assets/school.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 /* remove arrow from input type number
@@ -69,51 +77,48 @@ input::-webkit-inner-spin-button {
 
 /* remove arrow from input type number
 Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
-button:focus{
+button:focus {
   outline: none;
 }
-button{
+button {
   border: none;
 }
-ul{
+ul {
   list-style-type: none;
 }
 
-a{
+a {
   color: white;
   text-decoration: none;
 }
-a:visited{
+a:visited {
   color: white;
 }
-a:hover{
+a:hover {
   text-decoration: none;
   font-weight: 700;
 }
 
-form{
+form {
   border: 1px solid green;
   border-radius: 0.5em;
 }
 
-.hide{
-  display:none;
+.hide {
+  display: none;
 }
 
 @media screen and (max-width: 860px) {
-  .card{
+  .card {
     margin: 0.5rem !important;
   }
 
-
-  form{
+  form {
     width: 100% !important;
-  
-}
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="overview pt-5">
-    <h3 class="text-danger font-weight-bold bg-white pt-5">School Overview</h3>
+    <h3 class="text-danger font-weight-bold bg-white pt-5"></h3>
 
     <div class="cards">
       <router-link
@@ -8,36 +8,40 @@
         :to="{ path: '/dashboard/school/students' }"
       >
         <div class="card text-white bg-primary mb-3">
-          <div class="card-header">Total Students</div>
           <div class="card-body">
             <p class="card-text" v-if="loading">Loading...</p>
-            <h1 class="card-text">{{ totalStudents }}</h1>
+            <p>
+              <span>Name: </span
+              ><span>{{ student.firstname + " " + student.lastname }}</span>
+            </p>
           </div>
+          <div class="card-header">Basic Info</div>
         </div>
       </router-link>
       <router-link class="nav-link" :to="{ path: '/dashboard/school/staffs' }">
-        <div class="card text-white bg-secondary mb-3">
-          <div class="card-header">Total Staffs</div>
+        <div class="card text-white bg-primary mb-3">
           <div class="card-body">
             <p class="card-text" v-if="loading">Loading...</p>
-            <h1 class="card-text">{{ totalStaffs }}</h1>
+            <p><span>Academic Session:</span><span>{{}}</span></p>
+            <p><span>No of subjects:</span><span>{{}}</span></p>
+            <p>
+              <span>Class: </span><span>{{ student.subject_class }}</span>
+            </p>
           </div>
+          <div class="card-header">Academics</div>
         </div>
       </router-link>
-      <router-link class="nav-link" :to="{ path: '/dashboard/school/' }">
-        <div class="card text-white bg-success mb-3">
-          <div class="card-header">Classes</div>
+      <router-link class="nav-link" :to="{ path: '/dashboard/school/staffs' }">
+        <div class="card text-white bg-primary mb-3">
           <div class="card-body">
             <p class="card-text" v-if="loading">Loading...</p>
+            <p><span>Fees paid:</span><span>{{}}</span></p>
+            <p><span>Fees balance:</span><span>{{}}</span></p>
+            <button v-if="feesBalance" class="btn btn-secondary rounded">
+              Pay fees
+            </button>
           </div>
-        </div>
-      </router-link>
-      <router-link class="nav-link" :to="{ path: '/dashboard/school/' }">
-        <div class="card text-white bg-danger mb-3">
-          <div class="card-header">Subjects</div>
-          <div class="card-body">
-            <p class="card-text" v-if="loading">Loading...</p>
-          </div>
+          <div class="card-header">Fees</div>
         </div>
       </router-link>
     </div>
@@ -46,19 +50,18 @@
 
 <script>
 import { mapGetters } from "vuex";
-
 export default {
-  name: "overview",
-
+  name: "overvie",
+  data() {
+    return {};
+  },
   computed: {
-    ...mapGetters({
-      totalStudents: "totalStudents",
-      totalStaffs: "totalStaffs",
-      loading: "loading",
-    }),
+    ...mapGetters({ student: "getStudent" }),
   },
 };
 </script>
+
+
 
 <style scoped>
 .overview .cards {

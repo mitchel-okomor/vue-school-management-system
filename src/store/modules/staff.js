@@ -1,25 +1,15 @@
-import {
-  SET_STAFF,
-  GET_STAFF,
-  SET_LOGGED_IN,
-} from "../../helpers/mutationConstants";
+import { SET_STAFF, GET_STAFF } from "../../helpers/mutationConstants";
 import { SERVER_URL } from "../../helpers/constants";
 import axios from "axios";
 
 export default {
-
   state: () => ({
     staff: {},
-    isLoggedIn: false,
   }),
   mutations: {
     [SET_STAFF](state, payload) {
       state.staff = payload;
     },
-    [SET_LOGGED_IN](state, payload) {
-      state.isLoggedIn = payload;
-    },
-
   },
   actions: {
     //save staff to state
@@ -31,11 +21,11 @@ export default {
     [GET_STAFF]({ commit }) {
       const url = SERVER_URL + "/staff/" + localStorage.getItem("userId");
       axios
-        .get(url,
-          {
-            headers: {
-              "Authorization": localStorage.getItem('token')
-          }},)
+        .get(url, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
         .then((res) => {
           commit(SET_STAFF, res.data);
         })
@@ -43,14 +33,8 @@ export default {
           console.log(err);
         });
     },
-    //modify login status
-    [SET_LOGGED_IN]({ commit }, payload) {
-      commit(SET_LOGGED_IN, payload);
-    },
-   
   },
   getters: {
-    getStaff: state => state.staff,
-    isLoggedIn: state => state.isLoggedIn,
+    getStaff: (state) => state.staff,
   },
 };

@@ -2,9 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../components/Home";
 import Admit from "../components/Admit";
-import Admin from "../components/Admin";
 import Dashboard from "../components/Dashboard";
-import studentDashboard from "../components/studentDashboard";
+import studentDashboard from "../components/student/studentDashboard";
 import Students from "../components/Students";
 import Overview from "../components/Overview";
 import StaffLogin from "../components/staffLogin";
@@ -17,23 +16,26 @@ import Evaluations from "../components/Evaluations";
 import Info from "../components/info/Info";
 import NewInfo from "../components/New-info";
 import Books from "../components/Books";
-import StudentList from "../components/student/students"
+import StudentList from "../components/student/students";
 import checkLogin from "../helpers/checkLogin";
+import checkStudentLogin from "../helpers/checkStudentLogin";
 import Subject from "../components/subject/subject";
 import NewSubject from "../components/subject/New-subject";
 import Classes from "../components/classes/class";
 import NewClass from "../components/classes/New-class";
+import studentOverview from "../components/student/overview";
 
 const isLoggedIn = checkLogin();
+const studentIsLoggedIn = checkStudentLogin();
 
-import store from '../store/index';
+import store from "../store/index";
 
 Vue.use(VueRouter);
 
 //check staff authentication
 const ifStaffIsNotAuthenticated = (to, from, next) => {
-  console.log(isLoggedIn );
-  if (!isLoggedIn || store.getters.isLoggedIn) {
+  console.log(isLoggedIn);
+  if (!isLoggedIn || !store.getters.isLoggedIn) {
     next();
     return;
   }
@@ -41,7 +43,7 @@ const ifStaffIsNotAuthenticated = (to, from, next) => {
 };
 
 const ifStaffIsAuthenticated = (to, from, next) => {
-  console.log(isLoggedIn );
+  console.log(isLoggedIn);
   if (isLoggedIn || store.getters.isLoggedIn) {
     next();
     return;
@@ -49,24 +51,24 @@ const ifStaffIsAuthenticated = (to, from, next) => {
   next("/staff/login");
 };
 
-// //check student authentication
-// const ifStudentIsNotAuthenticated = (to, from, next) => {
-//   console.log(store.getters.staffIsLoggedIn)
-//   if (!store.getters.staffIsLoggedIn) {
-//     next();
-//     return;
-//   }
-//   next('/sudent/dashboard');
-// }
+//check student authentication
+const ifStudentIsNotAuthenticated = (to, from, next) => {
+  console.log(studentIsLoggedIn);
+  if (!studentIsLoggedIn || !store.getters.studentIsLoggedIn) {
+    next();
+    return;
+  }
+  next("/sudent/dashboard");
+};
 
 const ifStudentIsAuthenticated = (to, from, next) => {
-  console.log(isLoggedIn );
-  if (isLoggedIn || store.getters.isLoggedIn) {
-    next()
-    return
+  console.log(studentIsLoggedIn);
+  if (studentIsLoggedIn || store.getters.studentIsLoggedIn) {
+    next();
+    return;
   }
-  next('/student/login');
-}
+  next("/student/login");
+};
 
 const routes = [
   {
@@ -92,7 +94,7 @@ const routes = [
     path: "/student/login",
     name: "student-login",
     component: StudentLogin,
-    // beforeEnter: ifStudentIsNotAuthenticated
+    beforeEnter: ifStudentIsNotAuthenticated,
   },
 
   //staff admin dashbord routes
@@ -117,16 +119,16 @@ const routes = [
 
         children: [
           { path: "info", name: "info", component: Info },
-          {path: "new-info", name: "new-info", component: NewInfo, },
+          { path: "new-info", name: "new-info", component: NewInfo },
           { path: "", name: "school-info", component: Info },
           { path: "subjects", name: "subjects", component: Subject },
-          {path: "new-subject", name: "new-subject", component: NewSubject },
+          { path: "new-subject", name: "new-subject", component: NewSubject },
           { path: "classes", name: "classes", component: Classes },
-          {path: "new-class", name: "new-class", component: NewClass },
-          {path:"employ", name:"employ-staff", component: StaffRegister},
-          {path: "register", name:"register-student", component: Admit},
-          {path: "students", name:"students-list", component: StudentList},
-          {path: "staffs", name: "staff-list", component: StaffList}
+          { path: "new-class", name: "new-class", component: NewClass },
+          { path: "employ", name: "employ-staff", component: StaffRegister },
+          { path: "register", name: "register-student", component: Admit },
+          { path: "students", name: "students-list", component: StudentList },
+          { path: "staffs", name: "staff-list", component: StaffList },
         ],
       },
       {
@@ -170,11 +172,12 @@ const routes = [
       },
     ],
   },
+
   //students dashbourd routes
   {
     path: "/student/dashboard/",
     component: studentDashboard,
-     beforeEnter: ifStudentIsAuthenticated,
+    beforeEnter: ifStudentIsAuthenticated,
     children: [
       {
         path: "overview",
@@ -190,7 +193,7 @@ const routes = [
       {
         path: "",
         name: "",
-        component: Admin,
+        component: studentOverview,
       },
     ],
   },

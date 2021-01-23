@@ -1,49 +1,77 @@
 <template>
   <nav
-    class="navbar navbar-light bg-white justify-content-between fixed-top mb"
+    class="navbar navbar-light bg-white justify-content-between fixed-top mb-4"
   >
     <div class="logo p-3">
-        <router-link :to="{ path: '/' }">
-          School Management System
-        </router-link>
+      <router-link :to="{ path: '/' }"> School Management System </router-link>
     </div>
     <div class="d-flex">
-       <ul class="d-flex" >
-        <li class=" nav-item mr-4" v-if="!staff.firstname"><a href="#"><router-link :to="{path: '/dashboard'}">Staff</router-link> </a></li>
-        <li class="nav-item mr-4" v-if="!staff.firstname" ><a href="#"><router-link :to="{path: '/student/dashboard'}">Student</router-link> </a></li>
-        <li class=" nav-item mr-4" v-if="staff.firstname"><a href="#"><router-link :to="{path: '/dashboard'}">Dashboard</router-link> </a></li>
+      <ul class="d-flex">
+        <li class="nav-item mr-4" v-if="!user">
+          <a href="#"
+            ><router-link :to="{ path: '/dashboard' }">Staff</router-link>
+          </a>
+        </li>
+        <li class="nav-item mr-4" v-if="!user">
+          <a href="#"
+            ><router-link :to="{ path: '/student/dashboard' }"
+              >Student</router-link
+            >
+          </a>
+        </li>
+        <li class="nav-item mr-4" v-if="staff.firstname">
+          <a href="#"
+            ><router-link :to="{ path: '/dashboard' }">Dashboard</router-link>
+          </a>
+        </li>
+        <li class="nav-item mr-4" v-if="student.firstname">
+          <a href="#"
+            ><router-link :to="{ path: '/student/dashboard' }"
+              >Dashboard</router-link
+            >
+          </a>
+        </li>
       </ul>
-     <div class="mr-4 font-weight-bold"><router-link :to="{path: '/profile'}">{{staff.firstname}}</router-link> </div>
-    </div> 
+      <div class="mr-4 font-weight-bold" v-if="user">
+        <router-link :to="{ path: '/profile' }">{{ user }}</router-link>
+      </div>
+    </div>
   </nav>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
+import first_to_upper_case from "../helpers/firstToUpperCase";
 
 export default {
   name: "navigation",
-  data(){
-    return{
-      user:""
-    }
+  data() {
+    return {};
   },
-  computed:{
-    ...mapGetters({staff:"getStaff"})
-},
-}
+  computed: {
+    ...mapGetters({ staff: "getStaff", student: "getStudent" }),
+    user() {
+      if (this.staff.firstname) {
+        return first_to_upper_case(this.staff.firstname);
+      } else if (this.student.firstname) {
+        return first_to_upper_case(this.student.firstname);
+      }
+      return null;
+    },
+  },
+};
 </script>
 
 <style scoped>
-a{
-    color: rgb(0, 132, 255);
+a {
+  color: rgb(0, 132, 255);
 }
-a:visited{
-    color: rgb(0, 132, 255);
+a:visited {
+  color: rgb(0, 132, 255);
 }
-.logo{
+.logo {
   font-weight: 600;
   border: 1px solid green;
-border-radius: 3rem;
+  border-radius: 3rem;
 }
 </style>

@@ -3,61 +3,60 @@
     <div class="row">
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pr-0">
         <div class="left">
-          <div class="dashboard-image mt-5 p-4 ">
-            <img src="../assets/dummy.jpg"  class="mt-5"/>
-            <h4 class="mt-2">{{staff.firstname? staff.firstname : student.firstname}}</h4>
+          <div class="dashboard-image mt-5 p-4">
+            <img src="../assets/dummy.jpg" class="mt-5" />
+            <h4 class="mt-2">
+              {{ staff.firstname ? staff.firstname : student.firstname }}
+            </h4>
           </div>
 
-          <div class="side  ">
+          <div class="side">
             <h4 class=" ">Navigation</h4>
             <div class="row">
-              <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-ms-12 pr-0">
-                <div class="">
-                  <ul class="px-3 ">
-                    <li>
-                      <router-link :to="{ path: '/dashboard/overview' }"
-                        ><i class="fa fa-tachometer" aria-hidden="true"></i>
-                        Overview</router-link
-                      >
-                    </li>
-                    <li>
-                      <router-link :to="{ path: '/dashboard/school' }"
-                        ><i class="fa fa-th-large" aria-hidden="true"></i>
-                        School</router-link
-                      >
-                    </li>
-                    <li>
-                      <router-link :to="{ path: '/dashboard/students' }"
-                        ><i class="fa fa-th-large" aria-hidden="true"></i>
+              <div class="pl-md-5 pl-ms-2 pl-sm-2">
+                <ul class="px-3">
+                  <li>
+                    <router-link :to="{ path: '/dashboard/overview' }"
+                      ><i class="fa fa-tachometer" aria-hidden="true"></i>
+                      Overview</router-link
+                    >
+                  </li>
+                  <li>
+                    <router-link :to="{ path: '/dashboard/school' }"
+                      ><i class="fa fa-th-large" aria-hidden="true"></i>
+                      School</router-link
+                    >
+                  </li>
+                  <li>
+                    <router-link :to="{ path: '/dashboard/students' }"
+                      ><i class="fa fa-th-large" aria-hidden="true"></i>
                       Students</router-link
-                      >
-                    </li>
-                    <li>
-                      <router-link :to="{ path: '/dashboard/staffs' }"
-                        ><i class="fa fa-minus-square" aria-hidden="true"></i>
-                       Staffs</router-link
-                      >
-                    </li>
-                     <li>
-                      <router-link :to="{ path: '/dashboard/books' }"
-                        ><i class="fa fa-minus-square" aria-hidden="true"></i>
-                       Books</router-link
-                      >
-                    </li>
-                    <li>
-                      <router-link :to="{ path: '/dashboard/evaluations' }"
-                        ><i class="fa fa-circle" aria-hidden="true"></i>
-                        Evaluations</router-link
-                      >
-                    </li>
-                  </ul>
-                </div>
+                    >
+                  </li>
+                  <li>
+                    <router-link :to="{ path: '/dashboard/staffs' }"
+                      ><i class="fa fa-minus-square" aria-hidden="true"></i>
+                      Staffs</router-link
+                    >
+                  </li>
+                  <li>
+                    <router-link :to="{ path: '/dashboard/books' }"
+                      ><i class="fa fa-minus-square" aria-hidden="true"></i>
+                      Books</router-link
+                    >
+                  </li>
+                  <li>
+                    <router-link :to="{ path: '/dashboard/evaluations' }"
+                      ><i class="fa fa-circle" aria-hidden="true"></i>
+                      Evaluations</router-link
+                    >
+                  </li>
+                </ul>
               </div>
-              
             </div>
 
             <div class="text-center mt-5">
-              <button class="btn-primary" v-on:click="logoutUser">
+              <button class="btn-primary rounded" v-on:click="logoutUser">
                 Logout
               </button>
             </div>
@@ -73,34 +72,31 @@
 
 <script>
 import Logout from "../helpers/Logout";
-import {mapGetters} from 'vuex';
-import {GET_STAFFS, GET_STUDENTS} from '../helpers/mutationConstants';
-
+import { mapGetters } from "vuex";
+import { GET_STAFFS, GET_STUDENTS } from "../helpers/mutationConstants";
 
 export default {
   name: "dashboard",
   data() {
     return {};
   },
-created(){
-   this.$store.dispatch(GET_STAFFS);
-   this.$store.dispatch(GET_STUDENTS);
-
-},
+  created() {
+    this.$store.dispatch(GET_STAFFS);
+    this.$store.dispatch(GET_STUDENTS);
+  },
 
   methods: {
     logoutUser: () => {
       Logout();
     },
   },
-  computed:{
-...mapGetters({staff:"getStaff", student:"getStudent"})
-  }
+  computed: {
+    ...mapGetters({ staff: "getStaff", student: "getStudent" }),
+  },
 };
 </script>
 
 <style scoped>
-
 .dashboard-image {
   background-color: white;
   text-align: center;
@@ -168,9 +164,9 @@ h3 {
 }
 
 @media screen and (max-width: 860px) {
-  .side{
+  .side {
     height: fit-content;
     padding-bottom: 1rem;
- }
+  }
 }
 </style>

@@ -1,48 +1,49 @@
 <template>
   <div class="student-dashboard">
     <div class="row">
-      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pl-0 ">
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pl-0">
         <div>
-          <div class="dashboard-image mt-5 p-5 ">
-            <img src="../assets/dummy.jpg" />
-            <h3 class="mt-2" v-if="student">{{student.firstname}}</h3>
+          <div class="dashboard-image mt-5 p-4">
+            <img src="../../assets/dummy.jpg" />
+            <h3 class="mt-2" v-if="user.firstname">{{ user.firstname }}</h3>
           </div>
 
-          <div class="side pt-5 ">
-            <h4 class=" ">Navigation</h4>
-            <ul class="px-4 ">
+          <div class="side pt-5">
+            <ul class="px-4">
               <li>
-                <router-link :to="{ path: '/overview' }"
+                <router-link :to="{ path: '/' }"
                   ><i class="fa fa-tachometer" aria-hidden="true"></i>
                   Dashboard</router-link
                 >
               </li>
               <li>
                 <router-link :to="{ path: '/' }"
-                  ><i class="fa fa-th-large" aria-hidden="true"></i>
-                  Fees</router-link
+                  ><i class="fa fa-envelope" aria-hidden="true"></i>
+                  Messages</router-link
                 >
               </li>
               <li>
                 <router-link :to="{ path: '/' }"
-                  ><i class="fa fa-th-large" aria-hidden="true"></i>
-                  Academics</router-link
+                  ><i class="fa fa-bell" aria-hidden="true"></i>
+                  notification</router-link
                 >
               </li>
               <li>
                 <router-link :to="{ path: '/' }"
-                  ><i class="fa fa-minus-square" aria-hidden="true"></i>
-                  Info</router-link
+                  ><i class="fa fa-folder" aria-hidden="true"></i>
+                  files</router-link
                 >
               </li>
             </ul>
             <div class="text-center mt-5">
-              <button class="btn-primary" v-on:click="logoutUser">Logout</button>
+              <button class="btn-primary rounded" v-on:click="logoutUser">
+                Logout
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12">
+      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pr-0">
         <router-view></router-view>
       </div>
     </div>
@@ -50,19 +51,24 @@
 </template>
 
 <script>
-import Logout from "../helpers/Logout";
+import Logout from "../../helpers/LogoutStudent";
+import { GET_STUDENT } from "../../helpers/mutationConstants";
 
 export default {
   name: "dashboard",
   data() {
-    return {};
+    return {
+      user: "",
+    };
   },
-
+  created() {
+    this.$store.dispatch(GET_STUDENT);
+  },
   methods: {
-      logoutUser: ()=>{
-          Logout();
-      }
-  }
+    logoutUser: () => {
+      Logout();
+    },
+  },
 };
 </script>
 
