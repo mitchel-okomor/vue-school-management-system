@@ -26,17 +26,35 @@
       </router-link>
       <router-link class="nav-link" :to="{ path: '/dashboard/school/' }">
         <div class="card text-white bg-success mb-3">
-          <div class="card-header">Classes</div>
-          <div class="card-body">
+          <div class="card-header">Classes: {{ classes.length }}</div>
+          <ul class="text-left">
+            <li
+              class="mt-2"
+              v-for="subject_class in classes"
+              :key="subject_class._id"
+            >
+              <router-link :to="{ path: 'class/' + subject_class._id }">
+                {{ subject_class.title }}</router-link
+              >
+            </li>
+          </ul>
+          <div class="card-body px-0">
             <p class="card-text" v-if="loading">Loading...</p>
           </div>
         </div>
       </router-link>
       <router-link class="nav-link" :to="{ path: '/dashboard/school/' }">
         <div class="card text-white bg-danger mb-3">
-          <div class="card-header">Subjects</div>
-          <div class="card-body">
+          <div class="card-header">Subjects: {{ subjects.length }}</div>
+          <div class="card-body px-0">
             <p class="card-text" v-if="loading">Loading...</p>
+            <ul class="text-left">
+              <li class="mt-2" v-for="subject in subjects" :key="subject._id">
+                <router-link :to="{ path: 'subject/' + subject._id }">
+                  {{ subject.title }}</router-link
+                >
+              </li>
+            </ul>
           </div>
         </div>
       </router-link>
@@ -55,6 +73,8 @@ export default {
       totalStudents: "totalStudents",
       totalStaffs: "totalStaffs",
       loading: "loading",
+      classes: "getClasses",
+      subjects: "getSubjects",
     }),
   },
 };
@@ -78,6 +98,9 @@ export default {
     flex-direction: column;
     margin-left: 0;
     margin-right: 0;
+  }
+  .card ul {
+    list-style-type: none;
   }
 }
 </style>

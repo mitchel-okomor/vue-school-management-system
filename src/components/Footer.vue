@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <footer class="bg-primary text-white text-lg-start mt-5">
+    <footer class="bg-primary text-white text-lg-start">
       <!-- Grid container -->
       <div class="container p-4">
         <!--Grid row-->
@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  name: "footer",
+  name: "footer-comp",
 };
 </script>
 

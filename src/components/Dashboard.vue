@@ -13,7 +13,7 @@
           <div class="side">
             <h4 class=" ">Navigation</h4>
             <div class="row">
-              <div class="pl-md-5 pl-ms-2 pl-sm-2">
+              <div class="pl-md-5">
                 <ul class="px-3">
                   <li>
                     <router-link :to="{ path: '/dashboard/overview' }"
@@ -63,7 +63,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pl-0">
+      <div
+        class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pl-0 pr-0 right"
+      >
         <router-view></router-view>
       </div>
     </div>
@@ -73,7 +75,12 @@
 <script>
 import Logout from "../helpers/Logout";
 import { mapGetters } from "vuex";
-import { GET_STAFFS, GET_STUDENTS } from "../helpers/mutationConstants";
+import {
+  GET_CLASSES,
+  GET_STAFFS,
+  GET_STUDENTS,
+  GET_SUBJECTS,
+} from "../helpers/mutationConstants";
 
 export default {
   name: "dashboard",
@@ -83,6 +90,8 @@ export default {
   created() {
     this.$store.dispatch(GET_STAFFS);
     this.$store.dispatch(GET_STUDENTS);
+    this.$store.dispatch(GET_CLASSES);
+    this.$store.dispatch(GET_SUBJECTS);
   },
 
   methods: {

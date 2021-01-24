@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pr-0">
+      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pr-0 right">
         <router-view></router-view>
       </div>
     </div>
@@ -134,5 +134,15 @@ h3 {
 
 .side button {
   font-size: large;
+}
+.right {
+  height: 100vh;
+  overflow: auto;
+}
+@media screen and (max-width: 860px) {
+  .side {
+    height: fit-content;
+    padding-bottom: 1rem;
+  }
 }
 </style>

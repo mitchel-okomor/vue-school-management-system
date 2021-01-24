@@ -98,7 +98,7 @@
           />
         </div>
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-6 text-left">
         <label for="inputState">Category of staff:</label>
         <select class="form-control" v-model="category">
           <option value="" selected>Choose...</option>
@@ -148,7 +148,7 @@
       <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputCity">passport</label>
-          <div class="image-preview"><img v-if="passport" /></div>
+          <div class="image-preview mb-2"><img v-if="passport" /></div>
           <input
             type="file"
             ref="file"
@@ -276,7 +276,6 @@ form {
   opacity: 0.8;
   color: white;
   padding: 1.5rem;
-  margin-top: 1rem;
   width: 60%;
 }
 
@@ -287,6 +286,7 @@ form {
 .form-check input {
   width: fit-content;
 }
+
 .image-preview img {
   width: 12rem;
 }
