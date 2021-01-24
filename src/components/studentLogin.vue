@@ -8,8 +8,10 @@
     >
       <div class="mb-3"><h3>Student Login</h3></div>
       <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="inputEmail4">Email:</label>
+        <div class="form-group col-md-12 text-left">
+          <label for="inputEmail4"
+            >Email<span class="text-danger">*</span>:</label
+          >
           <input
             type="email"
             class="form-control"
@@ -20,8 +22,9 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-md-12">
-          <label>Password</label>
+        <div class="form-group col-md-12 text-left">
+          <label class="">Password<span class="text-danger">*</span></label>
+          <div class="">Password is student's surname</div>
           <input
             type="password"
             class="form-control"

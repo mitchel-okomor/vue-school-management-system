@@ -22,7 +22,7 @@
     >
       <div>{{ message }}</div>
 
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="firstname">First Name:</label>
           <input
@@ -45,7 +45,7 @@
           />
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email:</label>
           <input
@@ -68,7 +68,7 @@
           />
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label>D.O.B:</label>
           <input
@@ -91,7 +91,7 @@
           </select>
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputCity">State of residence</label>
           <select class="form-control" v-model="state_of_residence">
@@ -102,7 +102,7 @@
           </select>
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputAddress2">Address:</label>
           <input
@@ -123,7 +123,7 @@
           </select>
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputCity">passport</label>
           <div class="image-preview"><img v-if="passport" /></div>

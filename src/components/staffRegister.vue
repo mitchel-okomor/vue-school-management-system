@@ -20,7 +20,7 @@
         )
       "
     >
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="firstname">First Name:</label>
           <input
@@ -43,7 +43,7 @@
           />
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email:</label>
           <input
@@ -66,7 +66,7 @@
           />
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputAddress2">Address:</label>
           <input
@@ -87,7 +87,7 @@
           </select>
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label>D.O.B:</label>
           <input
@@ -119,7 +119,7 @@
               v-model="subjects"
             />
           </div>
-          <div class="row">
+          <div class="row text-left">
             <label class="form-check-label" for="exampleCheck1"
               >Mathematics</label
             >
@@ -133,8 +133,8 @@
           </div>
         </div>
       </div>
-      <div class="form-row"></div>
-      <div class="form-row">
+      <div class="form-row text-left"></div>
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputAddress2">Salary:</label>
           <input
@@ -145,7 +145,7 @@
           />
         </div>
       </div>
-      <div class="form-row">
+      <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="inputCity">passport</label>
           <div class="image-preview"><img v-if="passport" /></div>

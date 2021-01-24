@@ -4,7 +4,7 @@
       <div>
         <h1 class="mt-5">Welcome to Our School</h1>
         <p>Knowledge open doors to possibities</p>
-        <router-link :to="{ path: '/admission', name: 'Admission' }">
+        <router-link :to="{ path: '/admission', name: 'take-admission' }">
           <button class="btn btn-primary mt-5">
             Take Admission
           </button></router-link
