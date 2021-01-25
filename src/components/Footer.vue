@@ -26,15 +26,6 @@
               <li>
                 <a href="#!" class="text-white">Link 1</a>
               </li>
-              <li>
-                <a href="#!" class="text-white">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 3</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 4</a>
-              </li>
             </ul>
           </div>
           <!--Grid column-->
@@ -44,15 +35,6 @@
             <h5 class="text-uppercase mb-0">Links</h5>
 
             <ul class="list-unstyled">
-              <li>
-                <a href="#!" class="text-white">Link 1</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 2</a>
-              </li>
-              <li>
-                <a href="#!" class="text-white">Link 3</a>
-              </li>
               <li>
                 <a href="#!" class="text-white">Link 4</a>
               </li>

@@ -52,6 +52,16 @@ p {
 @media screen and (max-width: 860px) {
   .welcome {
     width: 100%;
+    margin: 0.5rem;
+    margin-bottom: 5rem;
+    margin-top: 7rem;
+    height: 20rem;
+  }
+
+  main {
+    min-height: fit-content;
+    background-image: url("../assets/education.svg");
+    background-repeat: round;
   }
 }
 </style>

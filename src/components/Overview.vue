@@ -1,7 +1,5 @@
 <template>
   <div class="overview pt-5">
-    <h3 class="text-danger font-weight-bold bg-white pt-5">School Overview</h3>
-
     <div class="cards">
       <router-link
         class="nav-link"

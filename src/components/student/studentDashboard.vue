@@ -122,6 +122,13 @@ h3 {
   font-weight: 400;
   color: var(--primary-color);
 }
+.side ul a:hover {
+  background: rgb(0, 98, 255);
+  color: white !important;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.4rem;
+}
 
 .side ul li {
   margin-top: 0.9rem;
@@ -139,10 +146,31 @@ h3 {
   height: 100vh;
   overflow: auto;
 }
+
 @media screen and (max-width: 860px) {
   .side {
     height: fit-content;
     padding-bottom: 1rem;
+  }
+  ul {
+    margin-left: 1rem;
+  }
+  ul li a {
+    font-weight: 800 !important;
+  }
+  .logout-container {
+    margin-top: 1rem !important;
+  }
+  .dashboard-image {
+    margin-top: 0.2rem !important;
+  }
+  .dashboard-image img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .side ul li {
+    margin-top: 0.5rem;
   }
 }
 </style>

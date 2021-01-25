@@ -119,6 +119,7 @@ form {
 
   form {
     width: 100% !important;
+    margin: 0.5rem;
   }
 }
 </style>

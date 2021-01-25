@@ -3,7 +3,10 @@
     class="navbar navbar-light bg-white justify-content-between fixed-top mb-4"
   >
     <div class="logo p-3">
-      <router-link :to="{ path: '/' }"> School Management System </router-link>
+      <router-link class="logo1" :to="{ path: '/' }">
+        School Management System
+      </router-link>
+      <router-link class="logo2" :to="{ path: '/' }"> SMS </router-link>
     </div>
     <div class="d-flex">
       <ul class="d-flex">
@@ -73,5 +76,24 @@ a:visited {
   font-weight: 600;
   border: 1px solid green;
   border-radius: 3rem;
+}
+.logo2 {
+  display: none;
+}
+@media screen and (max-width: 860px) {
+  .logo {
+    font-weight: 900;
+    border: none;
+    padding: 0 !important;
+  }
+  .logo1 {
+    display: none;
+  }
+  .logo2 {
+    display: block;
+  }
+  ul {
+    margin-bottom: 0;
+  }
 }
 </style>

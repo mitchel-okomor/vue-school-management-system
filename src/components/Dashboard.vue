@@ -5,17 +5,13 @@
         <div class="left">
           <div class="dashboard-image mt-5 p-4">
             <img src="../assets/dummy.jpg" class="mt-5" />
-            <h4 class="mt-2">
-              {{ staff.firstname ? staff.firstname : student.firstname }}
-            </h4>
           </div>
 
           <div class="side">
-            <h4 class=" ">Navigation</h4>
             <div class="row">
               <div class="pl-md-5">
                 <ul class="px-3">
-                  <li>
+                  <li class="active-link">
                     <router-link :to="{ path: '/dashboard/overview' }"
                       ><i class="fa fa-tachometer" aria-hidden="true"></i>
                       Overview</router-link
@@ -55,7 +51,7 @@
               </div>
             </div>
 
-            <div class="text-center mt-5">
+            <div class="text-center logout-container mt-5">
               <button class="btn-primary rounded" v-on:click="logoutUser">
                 Logout
               </button>
@@ -151,6 +147,14 @@ h3 {
   color: black;
 }
 
+.side ul a:hover {
+  background: rgb(0, 98, 255);
+  color: white !important;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.4rem;
+}
+
 .side ul li {
   margin-top: 0.9rem;
 }
@@ -177,5 +181,26 @@ h3 {
     height: fit-content;
     padding-bottom: 1rem;
   }
+  ul {
+    margin-left: 1rem;
+  }
+  ul li a {
+    font-weight: 800 !important;
+  }
+  .logout-container {
+    margin-top: 1rem !important;
+  }
+  .dashboard-image {
+    margin-top: 0.2rem !important;
+  }
+  .dashboard-image img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .side ul li {
+    margin-top: 0.5rem;
+  }
 }
 </style>
+
