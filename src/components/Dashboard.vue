@@ -4,7 +4,10 @@
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pr-0">
         <div class="left">
           <div class="dashboard-image mt-5 p-4">
-            <img src="../assets/dummy.jpg" class="mt-5" />
+            <img
+              src="https://bootdey.com/img/Content/avatar/avatar7.png"
+              class="mt-5"
+            />
           </div>
 
           <div class="side">

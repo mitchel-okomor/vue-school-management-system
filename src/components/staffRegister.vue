@@ -1,5 +1,6 @@
 <template>
   <main class="admit d-flex justify-content-center">
+    <loading v-if="loading"></loading>
     <form
       class=""
       action="#"
@@ -19,7 +20,9 @@
           salary
         )
       "
+      v-if="!loading"
     >
+      <h3 class="mb-4">Employ Staff</h3>
       <div class="form-row text-left">
         <div class="form-group col-md-6">
           <label for="firstname">First Name:</label>
@@ -73,17 +76,21 @@
             type="text"
             class="form-control"
             id="inputAddress2"
-            placeholder="Apartment, studio, or floor"
+            placeholder="Residencial address"
             v-model="address"
           />
         </div>
         <div class="form-group col-md-6">
           <label for="inputState">State of Origin:</label>
           <select class="form-control" v-model="state_of_origin">
-            <option selected>Choose...</option>
-            <option>Delta</option>
-            <option>Imo</option>
-            <option>Lagos</option>
+            <option value="" selected disabled>Choose...</option>
+            <option
+              v-for="state in states"
+              :key="state.state.id"
+              :value="state.state.name"
+            >
+              {{ state.state.name }}
+            </option>
           </select>
         </div>
       </div>
@@ -165,8 +172,12 @@
 <script>
 import axios from "axios";
 import { SERVER_URL } from "../helpers/constants";
+import { SET_LOADING, ADD_STAFF } from "../helpers/mutationConstants";
+import { mapGetters } from "vuex";
+import loading from "./loading.vue";
 
 export default {
+  components: { loading },
   name: "staffRegister",
   props: "staff",
   data() {
@@ -184,7 +195,14 @@ export default {
       passport: null,
       category: "",
       salary: "",
+      states: [],
     };
+  },
+  created() {
+    this.fetchStates();
+  },
+  computed: {
+    ...mapGetters({ loading: "loading" }),
   },
   methods: {
     handleFileUpload(e) {
@@ -242,7 +260,7 @@ export default {
       formData.append("category", category);
 
       const url = SERVER_URL + "/staff";
-
+      this.$store.dispatch(SET_LOADING, true);
       axios
         .post(
           url,
@@ -256,10 +274,25 @@ export default {
         )
         .then((res) => {
           console.log(res);
+          this.$store.dispatch(ADD_STAFF, res.data.data);
+          this.$store.dispatch(SET_LOADING, false);
+          this.message = "Staff successfully registered";
         })
         .catch((err) => {
+          this.$store.dispatch(SET_LOADING, true);
+          this.message = "Error occured while saving data";
           console.log(err);
         });
+    },
+    fetchStates() {
+      axios
+        .get(
+          "https://gist.githubusercontent.com/segebee/7dde9de8e70a207e6e19/raw/90c91f7318d67c9534e3a4d74e4bd755b144e01e/gistfile1.txt"
+        )
+        .then((res) => {
+          this.states = res.data;
+        })
+        .catch((err) => console.log(err));
     },
   },
 };

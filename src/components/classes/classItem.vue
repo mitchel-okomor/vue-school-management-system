@@ -2,8 +2,11 @@
   <div>
     <div class="row justify-content-between">
       <div>
-        <span class="mr-4 ml-2 font-weight-bold"
-          >{{ subject_class.title }}</span >
+        <router-link :to="{ path: '/class/' + subject_class._id }">
+          <span class="mr-4 ml-2 font-weight-bold">{{
+            subject_class.title
+          }}</span></router-link
+        >
       </div>
       <div>
         <i class="fa fa-edit mr-4 text-primary" v-on:click="togglePanel"></i
@@ -16,7 +19,7 @@
 
     <form
       class="hide p-2"
-      @submit.prevent="handleSubmit(title, subject_class._id, $event)"
+      @submit.prevent="handleSubmit(title, tution, subject_class._id, $event)"
     >
       <div class="form-group">
         <label for="title">Title</label>
@@ -26,6 +29,14 @@
           id="title"
           placeholder=""
           v-model="title"
+        />
+        <label for="title">Tution</label>
+        <input
+          type="number"
+          class="form-control"
+          id="tution"
+          placeholder=""
+          v-model="tution"
         />
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -42,6 +53,7 @@ export default {
   data() {
     return {
       title: this.subject_class.title,
+      tution: this.subject_class.tution,
     };
   },
 
@@ -56,9 +68,9 @@ export default {
     },
 
     //submit panel form
-    async handleSubmit(title, id, e) {
-      console.log(title, id);
-      await this.$store.dispatch(EDIT_CLASS, { title, id });
+    async handleSubmit(title, tution, id, e) {
+      console.log(title, tution, id);
+      await this.$store.dispatch(EDIT_CLASS, { title, tution, id });
       e.target.classList.add("hide");
     },
 

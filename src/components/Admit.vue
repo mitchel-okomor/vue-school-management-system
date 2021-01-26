@@ -20,6 +20,7 @@
       "
       v-if="!loading"
     >
+      <h3 class="mb-4">Student Registration</h3>
       <div>{{ message }}</div>
 
       <div class="form-row text-left">
@@ -95,10 +96,14 @@
         <div class="form-group col-md-6">
           <label for="inputCity">State of residence</label>
           <select class="form-control" v-model="state_of_residence">
-            <option selected>Choose...</option>
-            <option>Delta</option>
-            <option>Imo</option>
-            <option>Lagos</option>
+            <option value="" selected disabled>Choose...</option>
+            <option
+              v-for="state in states"
+              :key="state.state.id"
+              :value="state.state.name"
+            >
+              {{ state.state.name }}
+            </option>
           </select>
         </div>
       </div>
@@ -116,10 +121,14 @@
         <div class="form-group col-md-6">
           <label for="inputState">State of Origin:</label>
           <select class="form-control" v-model="state_of_origin">
-            <option selected>Choose...</option>
-            <option>Delta</option>
-            <option>Imo</option>
-            <option>Lagos</option>
+            <option value="" selected disabled>Choose...</option>
+            <option
+              v-for="state in states"
+              :key="state.state.id"
+              :value="state.state.name"
+            >
+              {{ state.state.name }}
+            </option>
           </select>
         </div>
       </div>
@@ -166,7 +175,11 @@ export default {
       date_of_birth: "",
       subject_class: "",
       passport: null,
+      states: [],
     };
+  },
+  created() {
+    this.fetchStates();
   },
   computed: {
     ...mapGetters({ loading: "loading" }),
@@ -226,7 +239,7 @@ export default {
         )
         .then((res) => {
           console.log(res);
-          this.$store.dispatch(ADD_STUDENT, res.data);
+          this.$store.dispatch(ADD_STUDENT, res.data.data);
           this.$store.dispatch(SET_LOADING, false);
           this.message = "Student successfully registered";
         })
@@ -235,6 +248,16 @@ export default {
           this.message = "Error occured while saving data";
           console.log(err);
         });
+    },
+    fetchStates() {
+      axios
+        .get(
+          "https://gist.githubusercontent.com/segebee/7dde9de8e70a207e6e19/raw/90c91f7318d67c9534e3a4d74e4bd755b144e01e/gistfile1.txt"
+        )
+        .then((res) => {
+          this.states = res.data;
+        })
+        .catch((err) => console.log(err));
     },
   },
 };

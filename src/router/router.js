@@ -24,6 +24,8 @@ import NewSubject from "../components/subject/New-subject";
 import Classes from "../components/classes/class";
 import NewClass from "../components/classes/New-class";
 import studentOverview from "../components/student/overview";
+import StaffProfile from "../components/staff/profile";
+import StudentProfile from "../components/student/profile";
 
 const isLoggedIn = checkLogin();
 const studentIsLoggedIn = checkStudentLogin();
@@ -31,7 +33,6 @@ const studentIsLoggedIn = checkStudentLogin();
 import store from "../store/index";
 
 Vue.use(VueRouter);
-
 //check staff authentication
 const ifStaffIsNotAuthenticated = (to, from, next) => {
   console.log(isLoggedIn);
@@ -58,11 +59,11 @@ const ifStudentIsNotAuthenticated = (to, from, next) => {
     next();
     return;
   }
-  next("/sudent/dashboard");
+  next("/student/dashboard");
 };
 
 const ifStudentIsAuthenticated = (to, from, next) => {
-  console.log(studentIsLoggedIn);
+  console.log(studentIsLoggedIn + " " + store.getters.studentIsLoggedIn);
   if (studentIsLoggedIn || store.getters.studentIsLoggedIn) {
     next();
     return;
@@ -91,10 +92,23 @@ const routes = [
     component: StaffRegister,
   },
   {
+    path: "/staff/profile",
+    name: "staff-profile",
+    component: StaffProfile,
+    beforeEnter: ifStaffIsAuthenticated,
+  },
+
+  {
     path: "/student/login",
     name: "student-login",
     component: StudentLogin,
     beforeEnter: ifStudentIsNotAuthenticated,
+  },
+  {
+    path: "/student/profile",
+    name: "student-profile",
+    component: StudentProfile,
+    beforeEnter: ifStudentIsAuthenticated,
   },
 
   //staff admin dashbord routes

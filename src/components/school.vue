@@ -8,7 +8,7 @@
             active
             :to="{ path: '/dashboard/school/info' }"
           >
-            Info
+            School Info
           </router-link>
         </li>
         <li class="nav-item">
@@ -46,7 +46,7 @@
             class="nav-link"
             :to="{ path: '/dashboard/school/classes' }"
           >
-            Classess
+            Classes
           </router-link>
         </li>
         <li class="nav-item">
@@ -80,7 +80,7 @@ a {
 }
 .nav-item {
   border-radius: 0.5rem;
-  border: 1px solid black;
+  background-color: lightgrey;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   text-transform: uppercase;
   font-weight: bold;

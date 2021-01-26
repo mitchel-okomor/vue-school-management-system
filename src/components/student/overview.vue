@@ -3,11 +3,9 @@
     <h3 class="text-danger font-weight-bold bg-white pt-5"></h3>
 
     <div class="cards">
-      <router-link
-        class="nav-link"
-        :to="{ path: '/dashboard/school/students' }"
-      >
+      <router-link class="nav-link" :to="{ path: '/student/dashboard/info' }">
         <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Basic Info</div>
           <div class="card-body">
             <p class="card-text" v-if="loading">Loading...</p>
             <p>
@@ -15,11 +13,14 @@
               ><span>{{ student.firstname + " " + student.lastname }}</span>
             </p>
           </div>
-          <div class="card-header">Basic Info</div>
         </div>
       </router-link>
-      <router-link class="nav-link" :to="{ path: '/dashboard/school/staffs' }">
+      <router-link
+        class="nav-link"
+        :to="{ path: '/student/dashboard/academics' }"
+      >
         <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Academics</div>
           <div class="card-body">
             <p class="card-text" v-if="loading">Loading...</p>
             <p><span>Academic Session:</span><span>{{}}</span></p>
@@ -28,11 +29,11 @@
               <span>Class: </span><span>{{ student.subject_class }}</span>
             </p>
           </div>
-          <div class="card-header">Academics</div>
         </div>
       </router-link>
-      <router-link class="nav-link" :to="{ path: '/dashboard/school/staffs' }">
+      <router-link class="nav-link" :to="{ path: '/student/dashboard/fees' }">
         <div class="card text-white bg-primary mb-3">
+          <div class="card-header">Fees</div>
           <div class="card-body">
             <p class="card-text" v-if="loading">Loading...</p>
             <p><span>Fees paid:</span><span>{{}}</span></p>
@@ -41,7 +42,6 @@
               Pay fees
             </button>
           </div>
-          <div class="card-header">Fees</div>
         </div>
       </router-link>
     </div>

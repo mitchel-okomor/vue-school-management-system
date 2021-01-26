@@ -25,13 +25,13 @@
               <li>
                 <router-link :to="{ path: '/' }"
                   ><i class="fa fa-bell" aria-hidden="true"></i>
-                  notification</router-link
+                  Notifications</router-link
                 >
               </li>
               <li>
                 <router-link :to="{ path: '/' }"
                   ><i class="fa fa-folder" aria-hidden="true"></i>
-                  files</router-link
+                  Files</router-link
                 >
               </li>
             </ul>
@@ -114,7 +114,7 @@ h3 {
 .side ul {
   margin-bottom: 1px;
   text-align: left;
-  margin-left: 4.5rem;
+  margin-left: 3rem;
 }
 
 .side ul a {

@@ -1,16 +1,16 @@
 <template>
   <div class="student-dashboard">
     <div class="row">
-      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pl-0 ">
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pl-0">
         <div>
-          <div class="dashboard-image mt-5 p-5 ">
-            <img src="../assets/dummy.jpg" />
-            <h3 class="mt-2" v-if="student">{{student.firstname}}</h3>
+          <div class="dashboard-image mt-5 p-5">
+            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" />
+            <h3 class="mt-2" v-if="student">{{ student.firstname }}</h3>
           </div>
 
-          <div class="side pt-5 ">
+          <div class="side pt-5">
             <h4 class=" ">Navigation</h4>
-            <ul class="px-4 ">
+            <ul class="px-4">
               <li>
                 <router-link :to="{ path: '/overview' }"
                   ><i class="fa fa-tachometer" aria-hidden="true"></i>
@@ -37,7 +37,9 @@
               </li>
             </ul>
             <div class="text-center mt-5">
-              <button class="btn-primary" v-on:click="logoutUser">Logout</button>
+              <button class="btn-primary" v-on:click="logoutUser">
+                Logout
+              </button>
             </div>
           </div>
         </div>
@@ -59,10 +61,10 @@ export default {
   },
 
   methods: {
-      logoutUser: ()=>{
-          Logout();
-      }
-  }
+    logoutUser: () => {
+      Logout();
+    },
+  },
 };
 </script>
 

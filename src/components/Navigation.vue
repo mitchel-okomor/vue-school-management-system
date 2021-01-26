@@ -35,8 +35,11 @@
           </a>
         </li>
       </ul>
-      <div class="mr-4 font-weight-bold" v-if="user">
-        <router-link :to="{ path: '/profile' }">{{ user }}</router-link>
+      <div class="mr-4 font-weight-bold" v-if="user && staff.firstname">
+        <router-link :to="{ path: '/staff/profile' }">{{ user }}</router-link>
+      </div>
+      <div class="mr-4 font-weight-bold" v-if="user && student.firstname">
+        <router-link :to="{ path: '/student/profile' }">{{ user }}</router-link>
       </div>
     </div>
   </nav>

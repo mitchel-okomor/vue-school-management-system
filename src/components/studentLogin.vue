@@ -50,7 +50,7 @@ import {
   SET_LOADING,
   SET_STUDENT,
   SET_USER,
-  SET_LOGGED_IN,
+  SET_STUDENT_LOGGED_IN,
 } from "../helpers/mutationConstants";
 import { mapGetters, mapActions } from "vuex";
 import Loading from "./loading.vue";
@@ -71,7 +71,7 @@ export default {
   created() {
     if (isLoggedIn()) {
       console.log("loggedIn");
-      this.$store.dispatch(SET_LOGGED_IN, true);
+      this.$store.dispatch(SET_STUDENT_LOGGED_IN, true);
       this.student = this.$store.getters.getStudent;
     }
   },
@@ -96,7 +96,7 @@ export default {
           localStorage.setItem("student_token", res.data.info.token);
           localStorage.setItem("student_id", res.data.info.data._id);
           this.$store.dispatch(SET_STUDENT, res.data.info.data);
-          this.$store.dispatch(SET_LOGGED_IN, true);
+          this.$store.dispatch(SET_STUDENT_LOGGED_IN, true);
           this.$store.dispatch(SET_LOADING, false);
           this.$store.dispatch(SET_USER, {
             name: res.data.info.data.firstname,

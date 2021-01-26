@@ -9,6 +9,7 @@ import {
   GET_STAFFS,
   SET_LOGGED_IN,
   ADD_STUDENT,
+  ADD_STAFF,
   SET_STUDENT_LOGGED_IN,
 } from "../../helpers/mutationConstants";
 import { SERVER_URL } from "../../helpers/constants";
@@ -37,6 +38,8 @@ export default {
     },
     //set student loggin
     [SET_STUDENT_LOGGED_IN](state, payload) {
+      console.log("setting Student login: " + payload);
+
       state.student_is_logged_in = payload;
     },
     //add school info
@@ -66,6 +69,10 @@ export default {
     },
     [ADD_STUDENT](state, payload) {
       state.students = [...state.students, payload];
+    },
+    [ADD_STAFF](state, payload) {
+      console.log(payload);
+      state.staffs = [...state.staffs, payload];
     },
     [GET_STAFFS](state, payload) {
       state.staffs = payload;
@@ -186,7 +193,7 @@ export default {
     },
 
     [SET_STUDENT_LOGGED_IN]({ commit }, payload) {
-      commit(SET_LOGGED_IN, payload);
+      commit(SET_STUDENT_LOGGED_IN, payload);
     },
     //set loading action
     [SET_LOADING]({ commit }, payload) {
@@ -194,6 +201,9 @@ export default {
     },
     [ADD_STUDENT]({ commit }, payload) {
       commit(ADD_STUDENT, payload);
+    },
+    [ADD_STAFF]({ commit }, payload) {
+      commit(ADD_STAFF, payload);
     },
   },
 
