@@ -26,6 +26,7 @@ import NewClass from "../components/classes/New-class";
 import studentOverview from "../components/student/overview";
 import StaffProfile from "../components/staff/profile";
 import StudentProfile from "../components/student/profile";
+import PageNotFound from "../components/NotFound";
 
 const isLoggedIn = checkLogin();
 const studentIsLoggedIn = checkStudentLogin();
@@ -80,6 +81,11 @@ const routes = [
   {
     path: "/admission",
     name: "admit",
+    component: Admit,
+  },
+  {
+    path: "/take-admission",
+    name: "student-admission",
     component: Admit,
   },
   {
@@ -211,6 +217,7 @@ const routes = [
       },
     ],
   },
+  { path: "*", component: PageNotFound },
 ];
 
 //Initialize a vue router
