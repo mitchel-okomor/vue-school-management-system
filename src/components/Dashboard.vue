@@ -65,7 +65,7 @@
       <div
         class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pl-0 pr-0 right"
       >
-        <router-view></router-view>
+        <div class="outer-div"><router-view></router-view></div>
       </div>
     </div>
   </div>
@@ -132,7 +132,7 @@ h3 {
 }
 .side {
   background-color: white;
-  height: 100vh;
+  height: 60vh;
 }
 .side .fa {
   margin-right: 0.2rem;
@@ -177,6 +177,11 @@ h3 {
 }
 .admit {
   margin-top: 0rem;
+}
+.outer-div {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 860px) {

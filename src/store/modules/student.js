@@ -38,5 +38,6 @@ export default {
   },
   getters: {
     getStudent: (state) => state.student,
+    getFeesPaid: (state) => (state.fees_paid ? state.fees_paid : 0),
   },
 };

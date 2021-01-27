@@ -72,8 +72,10 @@ export default {
 
 <style scoped>
 .school {
-  min-height: 100vh;
+  overflow: auto;
+  height: 100vh;
   margin-top: 5rem;
+  padding-bottom: 10rem;
 }
 a {
   color: black;

@@ -94,6 +94,9 @@ export default {
 </script>
 
 <style scoped>
+.overview {
+  overflow: auto;
+}
 .cards {
   margin-left: 2rem;
   display: flex;

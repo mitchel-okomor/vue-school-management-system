@@ -1,7 +1,7 @@
 <template>
   <div class="student-dashboard">
     <div class="row">
-      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pl-0">
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-ms-12 bg-blue pr-0">
         <div>
           <div class="dashboard-image mt-5 p-4">
             <img src="../../assets/dummy.jpg" />
@@ -43,8 +43,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pr-0 right">
-        <router-view></router-view>
+      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-ms-12 pl-0 right">
+        <div class="outer-div"><router-view></router-view></div>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
 
 <script>
 import Logout from "../../helpers/LogoutStudent";
-import { GET_STUDENT } from "../../helpers/mutationConstants";
+import { GET_CLASSES, GET_STUDENT } from "../../helpers/mutationConstants";
 
 export default {
   name: "dashboard",
@@ -63,6 +63,7 @@ export default {
   },
   created() {
     this.$store.dispatch(GET_STUDENT);
+    this.$store.dispatch(GET_CLASSES);
   },
   methods: {
     logoutUser: () => {
@@ -104,7 +105,7 @@ h3 {
 }
 .side {
   background-color: white;
-  height: 100vh;
+  height: 60vh;
 }
 .side .fa {
   margin-right: 0.5rem;
@@ -145,6 +146,11 @@ h3 {
 .right {
   height: 100vh;
   overflow: auto;
+}
+.outer-div {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 860px) {
