@@ -113,13 +113,12 @@ export default {
 .cards1 {
   display: flex;
   margin-left: 2rem;
+  flex-wrap: wrap;
+  flex-basis: 1rem;
+  flex-direction: row;
 }
 @media (max-width: 800px) {
   .overview .cards {
-    flex-direction: column;
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0 !important;
   }
   .card ul {
     list-style-type: none;
