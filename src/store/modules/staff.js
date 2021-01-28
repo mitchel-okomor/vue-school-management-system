@@ -1,4 +1,8 @@
-import { SET_STAFF, GET_STAFF } from "../../helpers/mutationConstants";
+import {
+  SET_STAFF,
+  GET_STAFF,
+  RESET_STAFF,
+} from "../../helpers/mutationConstants";
 import { SERVER_URL } from "../../helpers/constants";
 import axios from "axios";
 
@@ -10,11 +14,19 @@ export default {
     [SET_STAFF](state, payload) {
       state.staff = payload;
     },
+    [RESET_STAFF](state) {
+      state.staff = {};
+    },
   },
   actions: {
     //save staff to state
     [SET_STAFF]({ commit }, payload) {
       commit(SET_STAFF, payload);
+    },
+
+    //Loggin Staff
+    [RESET_STAFF]({ commit }) {
+      commit(RESET_STAFF);
     },
 
     //get from api

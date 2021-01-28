@@ -1,4 +1,8 @@
-import { SET_STUDENT, GET_STUDENT } from "../../helpers/mutationConstants";
+import {
+  SET_STUDENT,
+  GET_STUDENT,
+  RESET_STUDENT,
+} from "../../helpers/mutationConstants";
 import { SERVER_URL } from "../../helpers/constants";
 import axios from "axios";
 
@@ -10,6 +14,9 @@ export default {
     [SET_STUDENT](state, payload) {
       state.student = payload;
     },
+    [RESET_STUDENT](state) {
+      state.student = {};
+    },
   },
   actions: {
     //save student to state
@@ -18,6 +25,9 @@ export default {
     },
 
     //Loggin Student
+    [RESET_STUDENT]({ commit }) {
+      commit(RESET_STUDENT);
+    },
 
     //get from api
     [GET_STUDENT]({ commit }) {
